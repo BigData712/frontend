@@ -29,6 +29,7 @@ function getData(pageNumber: number, county: String, setSavedData: Function) {
         let mainArr = returned.hits.hits
         const storage:CrimeData[] = []
         mainArr.forEach((curr:any) => {
+            if (!curr._index.startsWith(".")){
             let newCrimeData: CrimeData = {
                 county: curr._index,
                 id: curr._id,
@@ -46,6 +47,7 @@ function getData(pageNumber: number, county: String, setSavedData: Function) {
                 off_code: curr._source.off_code
             }
             storage.push(newCrimeData);
+        }
         });
         setSavedData(storage); //save
     })
@@ -60,7 +62,7 @@ export default function DataViewer() {
 
     // USE EFFECT
     React.useEffect(() => {
-        getData(pageNumber, "boulder", setData)
+        getData(pageNumber, "", setData)
     }, [pageNumber])
   return (
     <TableContainer component={Paper}>

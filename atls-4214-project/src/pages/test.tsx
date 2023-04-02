@@ -14,7 +14,7 @@ export default function ApiTest() {
     const [returnedData, setReturnedData] = useState<any[]>();
 
     useEffect(() => {
-        retrieveData("_aliases", "").then((returned)=> {
+        retrieveData("_aliases/", "").then((returned)=> {
             let mainArr = Object.keys(returned) //Get only keys (city names)
                             .filter((curr) => (curr[0] !== '.')) // Remove opensearch options
                             .map((curr) => (
@@ -53,7 +53,7 @@ export default function ApiTest() {
             <br></br>
             <button
                 onClick={() => {
-                    retrieveData(setCounty.replaceAll(" ", "_").toLowerCase(), query).then((
+                    retrieveData(setCounty.replaceAll(" ", "_").toLowerCase() + "/", query).then((
                         returned
                     ) => {
                         setReturnedData(returned.hits.hits)
