@@ -7,7 +7,7 @@ export default function ApiTest() {
     const [setCounty, setSetCounty] = useState<String>("");
     const [query, setQuery] = useState<String>(`{
     "query": {
-        "matchall": {
+        "match_all": {
         }
     }
 }`);
