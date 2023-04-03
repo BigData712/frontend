@@ -16,24 +16,6 @@ import { debounce } from 'lodash';
 
 let numPerPage = 25;
 
-/**
- *
-
-const validatePackage = _.debounce((
-  setValidationStatus,
-  createPackageData,
-  setValidationAlertVisible,
-  setValidationAlertMessage,
-) => {
-  validatePackageCreation(
-    setValidationStatus,
-    createPackageData,
-    setValidationAlertVisible,
-    setValidationAlertMessage,
-  );
-}, 500, { leading: true });
- */
-
 function getData(pagenumber: number, county: String, setSavedData: Function, setDataStatus: Function, setHits: Function) {
     setDataStatus(Status.Loading);
     retrieveData(county, `
@@ -149,18 +131,25 @@ export default function DataViewer() {
     const [dataStatus, setDataStatus] = React.useState(Status.Initial);
     const [hits, setHits] = React.useState<number>(0);
     const [search, setSearch] = React.useState<String>("");
-
+    const [prevSearch, setPrevSearch] = React.useState<String>("");
 
 
     // USE EFFECT
     React.useEffect(() => {
-      if (search == "") {
-        getData(pagenumber, "", setData, setDataStatus, setHits);
-      } else {
-        searchDataDebounced(pagenumber, "", setData, setDataStatus, setHits, search);
+      let localPageNumber = pagenumber
+      if ((prevSearch == "" && search != "") || (prevSearch != "" && search == "")) {
+        console.log(prevSearch, search, prevSearch == "" && search != "")
+        setPagenumber(0);
+        localPageNumber = 0
       }
-    }, [pagenumber, search])
-
+      setPrevSearch(search);
+      if (search == "") {
+        getData(localPageNumber, "", setData, setDataStatus, setHits);
+      } else {
+        searchDataDebounced(localPageNumber, "", setData, setDataStatus, setHits, search);
+      }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [search, pagenumber])
 
     
   return (
@@ -183,7 +172,6 @@ export default function DataViewer() {
             <TablePagination 
                 page={pagenumber} 
                 onPageChange={(_, page) => {
-                    console.log(page)
                     setPagenumber(page);
                 }} 
                 count={hits} 

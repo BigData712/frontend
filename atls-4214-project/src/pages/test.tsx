@@ -1,4 +1,4 @@
-import { retrieveData } from '@/logic/apiRequest';
+import { retrieveData, retrieveData2 } from '@/logic/apiRequest';
 import React, { useEffect, useState } from 'react';
 
 
@@ -53,7 +53,7 @@ export default function ApiTest() {
             <br></br>
             <button
                 onClick={() => {
-                    retrieveData(setCounty.replaceAll(" ", "_").toLowerCase() + "/", query).then((
+                    retrieveData2(setCounty.replaceAll(" ", "_").toLowerCase(), query).then((
                         returned
                     ) => {
                         setReturnedData(returned.hits.hits)
