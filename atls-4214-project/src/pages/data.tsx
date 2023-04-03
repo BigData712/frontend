@@ -167,7 +167,7 @@ export default function DataViewer() {
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
-        <TableCell colSpan={8}>
+        <TableCell colSpan={6}>
           <TextField
             id="filled-search"
             label="Search data"
