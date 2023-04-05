@@ -6,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { retrieveData } from '@/logic/apiRequest';
+import { retrieveDataSQL } from '@/logic/apiRequest';
 import { CrimeData, Status } from '@/logic/types';
 import { toTitleCase } from '@/logic/helperFunctions';
 import moment from 'moment';
@@ -18,16 +18,12 @@ let numPerPage = 25;
 
 function getData(pagenumber: number, county: String, setSavedData: Function, setDataStatus: Function, setHits: Function) {
     setDataStatus(Status.Loading);
-    retrieveData(county, `
+    retrieveDataSQL(county, `
     {
         "from": ${(pagenumber * numPerPage)},
         "size": ${numPerPage},
         "track_total_hits": "true",
-        "query": {
-    
-            "match_all": {
-            }
-        }
+        "query": "SHOW tables LIKE %"
     }
     `).then((returned)=> {
         setHits(returned.hits.total.value)
@@ -63,7 +59,7 @@ function getData(pagenumber: number, county: String, setSavedData: Function, set
 
 function searchData(pagenumber: number, county: String, setSavedData: Function, setDataStatus: Function, setHits: Function, search: String) {
   setDataStatus(Status.Loading);
-    retrieveData(county, `
+    retrieveDataSQL(county, `
     {
         "from": ${(pagenumber * numPerPage)},
         "size": ${numPerPage},
@@ -138,7 +134,6 @@ export default function DataViewer() {
     React.useEffect(() => {
       let localPageNumber = pagenumber
       if ((prevSearch == "" && search != "") || (prevSearch != "" && search == "")) {
-        console.log(prevSearch, search, prevSearch == "" && search != "")
         setPagenumber(0);
         localPageNumber = 0
       }
