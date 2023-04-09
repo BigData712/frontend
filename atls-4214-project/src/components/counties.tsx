@@ -2,7 +2,7 @@ import { retrieveDataSQL } from '@/logic/apiRequest';
 import { Select, MenuItem } from '@mui/material';
 import React from 'react';
 import { BarChart, CartesianGrid, XAxis, YAxis, Legend, Bar, Tooltip, LabelList } from 'recharts';
-import data from './data';
+import data from '../pages/data';
 
 
 export default function Counties() {
@@ -61,7 +61,6 @@ export default function Counties() {
                     d3: loadedData3.find((curr) => (curr.key === loadedData[x].key))?.doc_count,
                 })
             }
-            
             setData(storage);
         }
     }, [loadedData, loadedData2])

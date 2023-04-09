@@ -16,3 +16,10 @@ export interface CrimeData {
 }
 
 export enum Status {Initial, Loading, Succeeded, Failed}
+
+
+export const colors = [
+    "#ff0000",
+    "#00ff00",
+    "#0000ff",
+]

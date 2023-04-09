@@ -20,16 +20,16 @@ import router from 'next/router';
 const drawerWidth = 240;
 const navItems = [
     {
-        name: 'Raw Data',
-        url: '/data'
+        name: 'About',
+        url: '/about'
     },
     {
         name: 'Charts',
         url: '/charts'
     },
     {
-        name: 'About',
-        url: '/about'
+        name: 'Raw Data',
+        url: '/data'
     }];
 
 export default function NavBar() {
@@ -42,7 +42,7 @@ export default function NavBar() {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Crime Cruncher
+        Crime Crunch
       </Typography>
       <Divider />
       <List>
@@ -76,7 +76,7 @@ export default function NavBar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Crime Cruncher
+            Crime Crunch
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
