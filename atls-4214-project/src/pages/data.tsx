@@ -6,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { retrieveDataSQL } from '@/logic/apiRequest';
+import { retrieveDataDSL, retrieveDataSQL } from '@/logic/apiRequest';
 import { CrimeData, Status } from '@/logic/types';
 import { toTitleCase } from '@/logic/helperFunctions';
 import moment from 'moment';
@@ -17,49 +17,53 @@ import { debounce } from 'lodash';
 let numPerPage = 25;
 
 function getData(pagenumber: number, county: String, setSavedData: Function, setDataStatus: Function, setHits: Function) {
-    setDataStatus(Status.Loading);
-    retrieveDataSQL(county, `
-    {
-        "from": ${(pagenumber * numPerPage)},
-        "size": ${numPerPage},
-        "track_total_hits": "true",
-        "query": "SHOW tables LIKE %"
-    }
-    `).then((returned)=> {
-        setHits(returned.hits.total.value)
-        let mainArr = returned.hits.hits
-        const storage:CrimeData[] = []
-        mainArr.forEach((curr:any) => {
-            if (!curr._index.startsWith(".")){
-            let newCrimeData: CrimeData = {
-                county: curr._index,
-                id: curr._id,
-                incident_time: {
-                    incident_hour: curr._source.inc_time.inc_hour,
-                    incident_day: curr._source.inc_time.inc_day,
-                    incident_month: curr._source.inc_time.inc_month,
-                    incident_year: curr._source.inc_time.inc_year
-                },
-                crime_desc: curr._source.crime_desc,
-                gun: curr._source.gun_violence,
-                hate: curr._source.hate_crime,
-                sex: curr._source.sex_crime,
-                location: curr._source.loc_id,
-                off_code: curr._source.off_code
-            }
-            storage.push(newCrimeData);
-        }
-        });
-        setDataStatus(Status.Succeeded);
-        setSavedData(storage); //save
-    }).catch(() => {
-        setDataStatus(Status.Failed);
-    })
+  setDataStatus(Status.Loading);
+  retrieveDataDSL(county, `
+  {
+      "from": ${(pagenumber * numPerPage)},
+      "size": ${numPerPage},
+      "track_total_hits": "true",
+      "query": {
+  
+          "match_all": {
+          }
+      }
+  }
+  `).then((returned)=> {
+      setHits(returned.hits.total.value)
+      let mainArr = returned.hits.hits
+      const storage:CrimeData[] = []
+      mainArr.forEach((curr:any) => {
+          if (!curr._index.startsWith(".")){
+          let newCrimeData: CrimeData = {
+              county: curr._index,
+              id: curr._id,
+              incident_time: {
+                  incident_hour: curr._source.inc_time.inc_hour,
+                  incident_day: curr._source.inc_time.inc_day,
+                  incident_month: curr._source.inc_time.inc_month,
+                  incident_year: curr._source.inc_time.inc_year
+              },
+              crime_desc: curr._source.crime_desc,
+              gun: curr._source.gun_violence,
+              hate: curr._source.hate_crime,
+              sex: curr._source.sex_crime,
+              location: curr._source.loc_id,
+              off_code: curr._source.off_code
+          }
+          storage.push(newCrimeData);
+      }
+      });
+      setDataStatus(Status.Succeeded);
+      setSavedData(storage); //save
+  }).catch(() => {
+      setDataStatus(Status.Failed);
+  })
 }
 
 function searchData(pagenumber: number, county: String, setSavedData: Function, setDataStatus: Function, setHits: Function, search: String) {
   setDataStatus(Status.Loading);
-    retrieveDataSQL(county, `
+    retrieveDataDSL(county, `
     {
         "from": ${(pagenumber * numPerPage)},
         "size": ${numPerPage},
