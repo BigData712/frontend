@@ -1,4 +1,5 @@
 import BarGraph from '@/components/BarGraph';
+import LineGraph from '@/components/LineGraph';
 import CountySelector from '@/components/countySelector';
 import Loading from '@/components/loading';
 import { retrieveCountyList, retrieveDataSQL } from '@/logic/apiRequest';
@@ -22,16 +23,6 @@ export default function Charts() {
 
     // ** VISUALIZATIONS LIST **
     const visualizations:React.ReactElement[] = [
-        // <BarGraph 
-        //     key='top 5 crinmes' 
-        //     title='Top 5 crimes'
-        //     selectedCounties={selectedCounties} 
-        //     sql="SELECT * FROM $CITY"
-        //     prefix='hits.hits'
-        //     width='35vw'
-        //     height='33vh'
-        //     limit={5}
-        // />,
         <BarGraph 
             key='top5 crime' 
             title='Top 5 Crimes by number reported'
@@ -61,6 +52,17 @@ export default function Charts() {
             width='77vw'
             height='45vh'
             limit={24}
+            sort
+        />,
+        <LineGraph 
+            key='year by year' 
+            title='crime reports by year'
+            selectedCounties={selectedCounties}  
+            sql='SELECT * FROM $CITY GROUP BY inc_time.inc_year'
+            prefix={['aggregations','inc_time.inc_year','buckets']}
+            width='77vw'
+            height='45vh'
+            limit={6}
             sort
         />
     ]

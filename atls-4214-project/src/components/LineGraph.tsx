@@ -4,9 +4,9 @@ import { Status, colors } from '@/logic/types';
 import { Paper, Typography } from '@mui/material';
 import React from 'react';
 import Loading from './loading';
-import { BarChart, CartesianGrid, XAxis, YAxis, Legend, Bar, Tooltip, ResponsiveContainer } from 'recharts';
+import { BarChart, CartesianGrid, XAxis, YAxis, Legend, Bar, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
 
-interface BarGraphProps {
+interface LineGraphProps {
     title: string,
     selectedCounties: string[],
     sql: string,
@@ -18,7 +18,7 @@ interface BarGraphProps {
 }
 
 function CustomizedTick(props: any) {
-    const { x, y, stroke, payload, setNumLines, numLines } = props;
+    const { x, y, stroke, payload, setNumLines, numLines, getLast } = props;
 
     const arrPayload = payload.value.toString().split(/[(\/)\s]+/);
     setNumLines(Math.max(numLines, arrPayload.length));
@@ -26,10 +26,17 @@ function CustomizedTick(props: any) {
         <g transform={`translate(${x},${y})`}>
         <text x={0} y={0} dy={16} fill="#666">
          {
-            arrPayload.map((curr: any) => (
-                <tspan key={curr} fontSize={14} textAnchor="middle" x="0" dy="20">
-                    {curr}
-                </tspan>
+            arrPayload.map((curr: any, idx: number) => (
+                (getLast(payload.value)) ? (
+                    <tspan key={curr} fontSize={14} textAnchor="middle" dx="-10" dy="20">
+                        {curr}
+                    </tspan>
+                ) : (
+                    <tspan key={curr} fontSize={14} textAnchor="middle" x="0" dy="20">
+                        {curr}
+                    </tspan>
+                )
+                
             ))
         }
         </text>
@@ -37,7 +44,7 @@ function CustomizedTick(props: any) {
     );
 }
 
-export default function BarGraph(props: BarGraphProps) {
+export default function LineGraph(props: LineGraphProps) {
     
     // ** STATE ** 
     const [rawData, setRawData] = React.useState<any[]>([]);
@@ -72,6 +79,7 @@ export default function BarGraph(props: BarGraphProps) {
             } else {
                 setRawData(storage)
                 setRequestStatus(Status.Succeeded)
+                
             }
         }
         
@@ -80,6 +88,7 @@ export default function BarGraph(props: BarGraphProps) {
     React.useEffect(() => {
         const storage = []
         if (requestStatus === Status.Succeeded){
+            console.log(rawData)
             if (props.selectedCounties.length === 1) {
                 for (let x = 0; x < props.limit; x++) {
                     storage.push({
@@ -112,6 +121,12 @@ export default function BarGraph(props: BarGraphProps) {
         setProcessedData(storage);
     }, [rawData])
 
+    function getLast(value:string) {
+        console.log(rawData[0][rawData.length-1].key, value)
+        return rawData[0][rawData.length-1].key === value
+    }
+    console.log(processedData)
+
     return (
         <div style={{
             padding: 15,
@@ -136,17 +151,17 @@ export default function BarGraph(props: BarGraphProps) {
                 ) ? (
                     <Loading status={requestStatus}/>
                 ) : (
-                    <ResponsiveContainer width="95%" height="95%">
-                        <BarChart data={processedData}>
+                    <ResponsiveContainer width="95%" height="95%" >
+                        <LineChart margin={{ top: 10, left: 10, right: 10, bottom: 10 }} data={processedData}>
                             <CartesianGrid vertical={false}/>
-                            <XAxis dataKey="name" height={20+(30*numLines)} interval={0} tick={<CustomizedTick setNumLines={setNumLines} numLines={numLines}/>}/>
+                            <XAxis width={200} dataKey="name" height={20+(30*numLines)} interval={0} tick={<CustomizedTick setNumLines={setNumLines} numLines={numLines} getLast={getLast}/>}/>
                             <YAxis />
                             <Tooltip />
                             <Legend verticalAlign="top"/>
                             {props.selectedCounties.map((curr, idx) => (
-                                <Bar dataKey={`d${idx+1}`} key={props.selectedCounties[idx]} fill={colors[idx]} name={curr}/>
+                                <Line dataKey={`d${idx+1}`} key={props.selectedCounties[idx]} stroke={colors[idx]} name={curr} strokeWidth={10}/>
                             ))}
-                        </BarChart>
+                        </LineChart>
                     </ResponsiveContainer>
                 )}
             </Paper>
