@@ -122,7 +122,7 @@ export default function AboutPage() {
                                 variant='body1'
                                 textAlign='left'
                             >
-                                Data is collected from the FBI's Crime Data Explorer, which hosts data from the National Incident-Based Reporting System (NIBRS).  The data used spans the years 2016-2021 
+                                Data is collected from the FBI&apos;s Crime Data Explorer, which hosts data from the Natiognal Incident-Based Reporting System (NIBRS).  The data used spans the years 2016-2021 
                                 as data stored in years prior to 2016 were stored with a different database schema.  The data was transformed into a standardized format and uploaded via curl to AWS 
                                 OpenSearch.  At time of writing, this consists of 2.55 million records and is viewable on the <a href="https://crime-crunch-kwd2.onrender.com/data">RAW DATA</a> page. 
                                 OpenSearch can then be queried with SQL.

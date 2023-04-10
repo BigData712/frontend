@@ -63,8 +63,8 @@ export default function Home() {
           </Typography>
           <br/>
           <Typography variant="body1" gutterBottom>
-            To get started using Crime Cruncher, go to the 'CHARTS' page to see statistics about different counties or
-            head to the 'ABOUT' page to learn more about the project and how it works. 
+            To get started using Crime Cruncher, go to the &apos;CHARTS&apos; page to see statistics about different counties or
+            head to the &apos;ABOUT&apos; page to learn more about the project and how it works. 
           </Typography>
         </Box>
         <Paper
