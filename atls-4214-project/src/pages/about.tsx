@@ -326,13 +326,13 @@ export default function AboutPage() {
                             <div
                                 style={{
                                     position: 'relative',
-                                    width: '10vw',
-                                    height: '10vw',
+                                    width: '9vw',
+                                    height: '9vw',
                                     margin: 'auto',
                                     textAlign: 'center'
                                 }}
                             > 
-                                <Image loader={() => "https://cdn-icons-png.flaticon.com/512/1886/1886902.png"} style={{height: "100%", width:"100%"}}  src={'https://cdn-icons-png.flaticon.com/512/1886/1886902.png'} alt="Host" fill/> 
+                                <Image loader={() => "https://avatars.githubusercontent.com/u/42682871?s=200&v=4"} style={{height: "100%", width:"100%"}}  src={'https://avatars.githubusercontent.com/u/42682871?s=200&v=4'} alt="Render" fill/> 
                             
                                 </div>
                         </Paper>
