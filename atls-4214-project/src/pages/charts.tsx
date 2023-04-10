@@ -33,14 +33,35 @@ export default function Charts() {
         //     limit={5}
         // />,
         <BarGraph 
-            key='Second' 
-            title='Top 5 Crimes'
+            key='top5 crime' 
+            title='Top 5 Crimes by number reported'
             selectedCounties={selectedCounties}  
             sql='SELECT * FROM $CITY GROUP BY crime_desc'
             prefix={['aggregations','crime_desc.keyword','buckets']}
-            width='35vw'
-            height='33vh'
+            width='38vw'
+            height='45vh'
             limit={5}
+        />,
+        <BarGraph 
+            key='top5 location' 
+            title='Top 5 locations for crimes reported'
+            selectedCounties={selectedCounties}  
+            sql='SELECT * FROM $CITY GROUP BY loc_id'
+            prefix={['aggregations','loc_id.keyword','buckets']}
+            width='38vw'
+            height='45vh'
+            limit={5}
+        />,
+        <BarGraph 
+            key='top hour' 
+            title='crime reports grouped by hour of day'
+            selectedCounties={selectedCounties}  
+            sql='SELECT * FROM $CITY GROUP BY inc_time.inc_hour'
+            prefix={['aggregations','inc_time.inc_hour','buckets']}
+            width='77vw'
+            height='45vh'
+            limit={24}
+            sort
         />
     ]
 
@@ -91,7 +112,9 @@ export default function Charts() {
                     <IconButton 
                         color= 'primary'
                         onClick={() => {
-                            setSelectedCounties([...selectedCounties, "Boulder"])
+                            //get not selected county list
+                            const notSelected = counties.filter((curr) => (!selectedCounties.includes(curr)));
+                            setSelectedCounties([...selectedCounties, notSelected[Math.floor(Math.random() * notSelected.length)]]);
                         }}
                         disabled = {selectedCounties.length >= 3}
                     >

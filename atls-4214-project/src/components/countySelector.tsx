@@ -29,6 +29,7 @@ export default function CountySelector(props: CountySelectorProps) {
             >
                 {
                     props.counties
+                    .filter((curr) => (!props.selectedCounties.filter((curr) => (curr !== props.selectedCounties[props.idx])).includes(curr)))
                     .map((curr) => (<MenuItem value={curr} key={curr}>{curr}</MenuItem>))
                 }
             </Select>

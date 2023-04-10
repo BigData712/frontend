@@ -19,7 +19,8 @@ export enum Status {Initial, Loading, Succeeded, Failed}
 
 
 export const colors = [
-    "#ff0000",
-    "#00ff00",
-    "#0000ff",
+    "#99FCC8",
+    "#ff9c5a",
+    "#4caafd",
+    "#f24775"
 ]

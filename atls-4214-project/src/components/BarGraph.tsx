@@ -15,15 +15,36 @@ interface BarGraphProps {
     width?: string,
     height?: string,
     limit: number,
-    
+    sort?:boolean,
+}
+
+function CustomizedTick(props: any) {
+    const { x, y, stroke, payload, setNumLines, numLines } = props;
+
+    const arrPayload = payload.value.toString().split(/[(\/)\s]+/);
+    setNumLines(Math.max(numLines, arrPayload.length));
+    return (
+        <g transform={`translate(${x},${y})`}>
+        <text x={0} y={0} dy={16} fill="#666">
+         {
+            arrPayload.map((curr: any) => (
+                <tspan key={curr} fontSize={14} textAnchor="middle" x="0" dy="20">
+                    {curr}
+                </tspan>
+            ))
+        }
+        </text>
+      </g>
+    );
 }
 
 export default function BarGraph(props: BarGraphProps) {
+    
     // ** STATE ** 
     const [rawData, setRawData] = React.useState<any[]>([]);
     const [processedData, setProcessedData] = React.useState<any[]>([]);
     const [requestStatus, setRequestStatus] = React.useState(Status.Initial);
-
+    const [numLines, setNumLines] = React.useState(2);
     // ** USE EFFECT **
     React.useEffect(() => {
         setRawData(Array(props.selectedCounties.length).fill([]))
@@ -47,7 +68,6 @@ export default function BarGraph(props: BarGraphProps) {
                         err = true
                     })
             }
-            console.log('yo')
             if (err) {
                 setRequestStatus(Status.Failed)
             } else {
@@ -69,7 +89,6 @@ export default function BarGraph(props: BarGraphProps) {
                     })
                 }
             } else if (props.selectedCounties.length === 2) {
-                console.log('2')
                 for (let x = 0; x < props.limit; x++) {
                     storage.push({
                         name: rawData[0][x].key,
@@ -88,7 +107,9 @@ export default function BarGraph(props: BarGraphProps) {
                 }
             }
         }
-        console.log(storage);
+        if (props.sort) {
+            storage.sort((a,b) => (a.name < b.name) ? -1 : 0)
+        }
         setProcessedData(storage);
     }, [rawData])
 
@@ -100,7 +121,7 @@ export default function BarGraph(props: BarGraphProps) {
                 elevation={3}
                 style={{
                     margin: 'auto',
-                    padding: '20px',
+                    padding: '10px',
                     width: props.width,
                     height: props.height
                 }}
@@ -119,10 +140,10 @@ export default function BarGraph(props: BarGraphProps) {
                     <ResponsiveContainer width="95%" height="95%">
                         <BarChart data={processedData}>
                             <CartesianGrid vertical={false}/>
-                            <XAxis dataKey="name" />
+                            <XAxis dataKey="name" height={20+(30*numLines)} interval={0} tick={<CustomizedTick setNumLines={setNumLines} numLines={numLines}/>}/>
                             <YAxis />
                             <Tooltip />
-                            <Legend />
+                            <Legend verticalAlign="top"/>
                             {props.selectedCounties.map((curr, idx) => (
                                 <Bar dataKey={`d${idx+1}`} key={props.selectedCounties[idx]} fill={colors[idx]} name={curr}/>
                             ))}
