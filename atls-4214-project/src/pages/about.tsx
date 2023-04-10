@@ -1,5 +1,5 @@
 import { PausePresentationRounded } from '@mui/icons-material';
-import { Paper, Typography,Grid } from '@mui/material';
+import { Paper, Typography, Grid, Button, Stack, Divider } from '@mui/material';
 import Image from 'next/image';
 import React from 'react'
 
@@ -33,7 +33,7 @@ export default function AboutPage() {
                 <Grid container spacing={2}>
                     <Grid item xs={6} md={7}>
                         <Paper
-                            elevation={3}
+                            elevation={0}
                             style={{
                                 // maxWidth: '67vw',
                                 margin: 'auto',
@@ -62,7 +62,7 @@ export default function AboutPage() {
                     </Grid>
                     <Grid item xs={6} md={5}>
                         <Paper
-                            elevation={3}
+                            elevation={0}
                             style={{
                                 // maxWidth: '67vw',
                                 margin: 'auto',
@@ -109,7 +109,7 @@ export default function AboutPage() {
                 <Grid container spacing={2}>
                     <Grid item xs={6} md={5}>
                         <Paper
-                            elevation={3}
+                            elevation={0}
                             style={{
                                 // maxWidth: '67vw',
                                 margin: 'auto',
@@ -154,6 +154,63 @@ export default function AboutPage() {
                         </Paper>
                     </Grid>
                 </Grid>
+                <br/>
+                <Paper 
+                    elevation={3}
+                    style={{
+                        // maxWidth: '80vw',
+                        margin: 'auto',
+                        padding: '20px'
+                    }}
+                >
+                    <Typography
+                        variant='h2'
+                        textAlign='center'
+                    >
+                        Viewing the Data
+                    </Typography>
+                </Paper>
+                <br/>
+                <Paper
+                    elevation={0}
+                    style={{
+                        // maxWidth: '67vw',
+                        margin: 'auto',
+                        padding: '20px',
+                        height: '30vh'
+                    }}
+                >
+                    <div
+                        style={{
+                            position: 'relative',
+                            width: '80vw',
+                            height: '27vh',
+                            margin: 'auto',
+                            textAlign: 'center'
+                        }}
+                    > 
+                        <Image style={{height: "100%", width:"100%"}}  src={'/Chartselect.png'} alt="Chart example" fill/> 
+                    </div>
+                </Paper>
+                <br/>
+                <Paper 
+                    elevation={0}
+                    style={{
+                        // maxWidth: '80vw',
+                        margin: 'auto',
+                        padding: '20px'
+                    }}
+                >
+                    <Typography
+                        variant='body1'
+                        textAlign='left'
+                    >
+                        Crime statistics based on the collected data can be viewed on the <a href="https://crime-crunch-kwd2.onrender.com/charts">CHARTS</a> page.  Users can select 
+                        which county they would like to view, up to three counties at at time.  The site will then query OpenSearch and display relevant statistics such as most
+                        common crimes, most common crime locations, crime frequency by time of day, and volume of crimes year over year. These visualizations can help users get a 
+                        better understanding of what kinds of crime are happening where and how their frequency may be changing over time. 
+                    </Typography>
+                </Paper>
                 <br/>
                 <Paper 
                     elevation={3}
@@ -338,6 +395,32 @@ export default function AboutPage() {
                         </Paper>
                     </Grid>
                 </Grid>
+                <br/>
+                <Paper 
+                    elevation={3}
+                    style={{
+                        // maxWidth: '80vw',
+                        margin: 'auto',
+                        padding: '20px'
+                    }}
+                >
+                    <Typography
+                        variant='h2'
+                        textAlign='center'
+                    >
+                        Additional Resources
+                    </Typography>
+                    <Divider/> <br/>
+                    <Stack direction="row" spacing={2} justifyContent='center'>
+                    <Button href="https://github.com/BigData712">GitHub</Button>
+                    <Button href="https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/home">Data</Button>
+                    <Button href="https://www.colorado-demographics.com/counties_by_population">CO Population Demographics</Button>
+                    <Button href="https://ucr.fbi.gov/nibrs/2012/resources/nibrs-offense-definitions">NIBRS Offense Definitions</Button>
+                    <Button href="https://www.fbi.gov/how-we-can-help-you/more-fbi-services-and-information/ucr/nibrs">NIBRS Resources</Button>
+                    </Stack>
+                </Paper>
+                
+
             </div>
         </>
     );
