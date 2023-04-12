@@ -89,14 +89,14 @@ export default function LineGraph(props: LineGraphProps) {
         const storage = []
         if (requestStatus === Status.Succeeded){
             console.log(rawData)
-            if (props.selectedCounties.length === 1) {
+            if (props.selectedCounties.length === 1 && rawData.length === 1) {
                 for (let x = 0; x < props.limit; x++) {
                     storage.push({
                         name: rawData[0][x].key,
                         d1: rawData[0][x].doc_count,
                     })
                 }
-            } else if (props.selectedCounties.length === 2) {
+            } else if (props.selectedCounties.length === 2 && rawData.length === 2) {
                 for (let x = 0; x < props.limit; x++) {
                     storage.push({
                         name: rawData[0][x].key,
@@ -104,7 +104,7 @@ export default function LineGraph(props: LineGraphProps) {
                         d2: rawData[1].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count,
                     })
                 }
-            } else if (props.selectedCounties.length === 3) {
+            } else if (props.selectedCounties.length === 3 && rawData.length === 3) {
                 for (let x = 0; x < props.limit; x++) {
                     storage.push({
                         name: rawData[0][x].key,
