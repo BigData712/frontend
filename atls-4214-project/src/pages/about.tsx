@@ -149,7 +149,7 @@ export default function AboutPage() {
                                     textAlign: 'center'
                                 }}
                             > 
-                                <Image style={{height: "100%", width:"100%"}}  src={'/Datastore.png'} alt="Data Pipeline" fill/> 
+                                <Image style={{height: "100%", width:"100%"}}  src={'/Datastore.png'} alt="Data Pipeline" fill objectFit='contain'/> 
                             </div>
                         </Paper>
                     </Grid>
@@ -189,7 +189,7 @@ export default function AboutPage() {
                             textAlign: 'center'
                         }}
                     > 
-                        <Image style={{height: "100%", width:"100%"}}  src={'/Chartselect.png'} alt="Chart example" fill/> 
+                        <Image style={{height: "100%", width:"100%"}}  src={'/Chartselect.png'} alt="Chart example" objectFit='contain' fill/> 
                     </div>
                 </Paper>
                 <br/>

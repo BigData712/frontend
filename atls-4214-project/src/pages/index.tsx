@@ -37,12 +37,12 @@ export default function Home() {
             style={{
                 position: 'relative',
                 width: '70vw',
-                height: '70vh',
+                height: '50vh',
                 margin: 'auto',
                 textAlign: 'center'
             }}
         > 
-          <Image loader={() => "https://ccionline.org/wp-content/uploads/2021/02/CCI-District-Map-2020.png"} style={{height: "100%", width:"100%"}}  src={'https://ccionline.org/wp-content/uploads/2021/02/CCI-District-Map-2020.png://opensearch.org/assets/opensearch-twitter-card.png'} alt="Colorado Counties" fill/> 
+          <Image loader={() => "https://ccionline.org/wp-content/uploads/2021/02/CCI-District-Map-2020.png"} src={'https://ccionline.org/wp-content/uploads/2021/02/CCI-District-Map-2020.png'} alt="Colorado Counties" fill objectFit="contain"/>
         </div>
         </Box>
         <Box
