@@ -53,7 +53,6 @@ export default function Counties() {
         if (loadedData.length > 0 && loadedData2.length > 0){
             const storage = [];
             for (let x = 0; x < 10; x++) {
-                console.log(loadedData[x].key);
                 storage.push({
                     name: loadedData[x].key,
                     d1: loadedData[x].doc_count,

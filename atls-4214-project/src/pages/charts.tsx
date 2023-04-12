@@ -72,9 +72,11 @@ export default function Charts() {
         />
     ]
 
-
+   
     return (
+
         <>
+            
             <div
                 style={{
                     padding: 15

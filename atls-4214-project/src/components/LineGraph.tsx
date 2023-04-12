@@ -128,10 +128,8 @@ export default function LineGraph(props: LineGraphProps) {
     }, [rawData])
 
     function getLast(value:string) {
-        console.log(rawData[0][rawData.length-1].key, value)
         return rawData[0][rawData.length-1].key === value
     }
-    console.log(processedData)
 
     return (
         <div style={{

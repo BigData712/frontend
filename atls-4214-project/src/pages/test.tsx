@@ -50,7 +50,6 @@ export default function ApiTest() {
                     retrieveDataSQL(querySQL).then((
                         returned
                     ) => {
-                        console.log(returned)
                         setReturnedDataSQL(returned)
                     })
                 }}
