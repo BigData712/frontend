@@ -1,4 +1,4 @@
-gexport function toTitleCase(input: String):String {
+export function toTitleCase(input: String):String {
         return (
                 input // Replace underscores with spaces
                 .split(' ') //split on spaces
