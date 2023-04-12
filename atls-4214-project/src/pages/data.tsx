@@ -10,7 +10,7 @@ import { retrieveDataDSL, retrieveDataSQL } from '@/logic/apiRequest';
 import { CrimeData, Status } from '@/logic/types';
 import { toTitleCase } from '@/logic/helperFunctions';
 import moment from 'moment';
-import { TableFooter, TablePagination, TextField } from '@mui/material';
+import { TableFooter, TablePagination, TextField, Typography } from '@mui/material';
 import Loading from '@/components/loading';
 import { debounce } from 'lodash';
 
@@ -152,73 +152,80 @@ export default function DataViewer() {
 
     
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-        <TableHead>
-        <TableCell colSpan={6}>
-          <TextField
-            id="filled-search"
-            label="Search data"
-            type="search"
-            variant="outlined"
-            fullWidth
-            value = {search}
-            onChange={(event) => {
-              setSearch(event.target.value)
-            }}
-          />
-        </TableCell>
-            <TablePagination 
-                page={pagenumber} 
-                onPageChange={(_, page) => {
-                    setPagenumber(page);
-                }} 
-                count={hits} 
-                rowsPerPage={numPerPage}
-                rowsPerPageOptions={[-1]}
+    <Paper 
+        elevation={3}
+        style={{
+            maxWidth: '80vw',
+            margin: 'auto',
+            padding: '20px'
+        }}
+    >
+      <Typography variant='h2' align='center'>Data</Typography>
+      <Typography variant='body1' align='center'>Below is all the raw data collected</Typography>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+          <TableHead>
+          <TableCell colSpan={6}>
+            <TextField
+              id="filled-search"
+              label="Search data"
+              type="search"
+              variant="outlined"
+              fullWidth
+              value = {search}
+              onChange={(event) => {
+                setSearch(event.target.value)
+              }}
             />
-          <TableRow>
-            <TableCell>Incident ID</TableCell>
-            <TableCell >County</TableCell>
-            <TableCell >Time Occurred</TableCell>
-            <TableCell >Criminal Act Description</TableCell>
-            <TableCell >Location Type</TableCell>
-            <TableCell >Offense Code</TableCell>
-            <TableCell >Gun Violence</TableCell>
-            <TableCell >Sex Crime</TableCell>
-            <TableCell >Hate Crime</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-            {(dataStatus !== Status.Succeeded) ? (
-                <TableCell colSpan={10}>
-                <Loading status={dataStatus}/>
-                </TableCell>
-            ) : (
-          data?.map((row) => (
-            <TableRow
-              key={String(row.id)}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {String(row.id)}
-              </TableCell>
-              <TableCell >{toTitleCase(row.county)}</TableCell>
-              <TableCell >{moment(`${row.incident_time.incident_year} + ${row.incident_time.incident_month} + ${row.incident_time.incident_day} + ${row.incident_time.incident_hour}`, "YYYYMMDDHH").format('LLL')}</TableCell>
-              <TableCell >{row.crime_desc}</TableCell>
-              <TableCell >{row.location}</TableCell>
-              <TableCell >{row.off_code}</TableCell>
-              <TableCell >{(row.gun) ? ("Yes") : ("No")}</TableCell>
-              <TableCell >{(row.sex) ? ("Yes") : ("No")}</TableCell>
-              <TableCell >{(row.hate) ? ("Yes") : ("No")}</TableCell>
+          </TableCell>
+              <TablePagination 
+                  page={pagenumber} 
+                  onPageChange={(_, page) => {
+                      setPagenumber(page);
+                  }} 
+                  count={hits} 
+                  rowsPerPage={numPerPage}
+                  rowsPerPageOptions={[-1]}
+              />
+            <TableRow>
+              <TableCell>Incident ID</TableCell>
+              <TableCell >County</TableCell>
+              <TableCell >Time Occurred</TableCell>
+              <TableCell >Criminal Act Description</TableCell>
+              <TableCell >Location Type</TableCell>
+              <TableCell >Offense Code</TableCell>
+              <TableCell >Gun Violence</TableCell>
+              <TableCell >Sex Crime</TableCell>
+              <TableCell >Hate Crime</TableCell>
             </TableRow>
-          )))}
-        </TableBody>
-        <TableFooter>
-            
-
-        </TableFooter>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+              {(dataStatus !== Status.Succeeded) ? (
+                  <TableCell colSpan={10}>
+                  <Loading status={dataStatus}/>
+                  </TableCell>
+              ) : (
+            data?.map((row) => (
+              <TableRow
+                key={String(row.id)}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {String(row.id)}
+                </TableCell>
+                <TableCell >{toTitleCase(row.county)}</TableCell>
+                <TableCell >{moment(`${row.incident_time.incident_year} + ${row.incident_time.incident_month} + ${row.incident_time.incident_day} + ${row.incident_time.incident_hour}`, "YYYYMMDDHH").format('LLL')}</TableCell>
+                <TableCell >{row.crime_desc}</TableCell>
+                <TableCell >{row.location}</TableCell>
+                <TableCell >{row.off_code}</TableCell>
+                <TableCell >{(row.gun) ? ("Yes") : ("No")}</TableCell>
+                <TableCell >{(row.sex) ? ("Yes") : ("No")}</TableCell>
+                <TableCell >{(row.hate) ? ("Yes") : ("No")}</TableCell>
+              </TableRow>
+            )))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Paper>
   );
 }
