@@ -5,7 +5,7 @@ import Loading from '@/components/loading';
 import { retrieveCountyList, retrieveDataSQL } from '@/logic/apiRequest';
 import { Status } from '@/logic/types';
 import { AddCircle, RemoveCircle } from '@mui/icons-material';
-import { IconButton, Paper, Typography } from '@mui/material'
+import { FormControlLabel, FormGroup, IconButton, Paper, Switch, Typography } from '@mui/material'
 import React from 'react'
 
 
@@ -14,6 +14,7 @@ export default function Charts() {
     const [counties, setCounties] = React.useState<string[]>([]);
     const [countyStatus, setCountyStatus] = React.useState(Status.Initial);
     const [selectedCounties, setSelectedCounties] = React.useState<string[]>(["Boulder"]);
+    const [perCapita, setPerCapita] = React.useState(true);
 
     // ** USE EFFECT **
     // Load County Options
@@ -32,6 +33,7 @@ export default function Charts() {
             width='38vw'
             height='45vh'
             limit={5}
+            perCapita={perCapita}
         />,
         <BarGraph 
             key='top5 location' 
@@ -42,6 +44,7 @@ export default function Charts() {
             width='38vw'
             height='45vh'
             limit={5}
+            perCapita={perCapita}
         />,
         <BarGraph 
             key='top hour' 
@@ -52,6 +55,7 @@ export default function Charts() {
             width='77vw'
             height='45vh'
             limit={24}
+            perCapita={perCapita}
             sort
         />,
         <LineGraph 
@@ -63,6 +67,7 @@ export default function Charts() {
             width='77vw'
             height='45vh'
             limit={6}
+            perCapita={perCapita}
             sort
         />
     ]
@@ -101,6 +106,7 @@ export default function Charts() {
                             idx={idx} 
                         />
                     ))}
+                    
                     <div>
                     <IconButton 
                         color= 'primary'
@@ -122,6 +128,17 @@ export default function Charts() {
                     >
                         <AddCircle />
                     </IconButton>
+                        <FormControlLabel 
+                            control={
+                                <Switch 
+                                    value={perCapita}
+                                    onChange={(event) => {
+                                        setPerCapita(event.target.checked)
+                                    }} 
+                                />
+                            } 
+                            label="Per Capita" 
+                        />
                     </div>
                 </div>
             </Paper>

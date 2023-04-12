@@ -14,6 +14,7 @@ interface BarGraphProps {
     width?: string,
     height?: string,
     limit: number,
+    perCapita: boolean,
     sort?:boolean,
 }
 
@@ -81,27 +82,33 @@ export default function BarGraph(props: BarGraphProps) {
         const storage = []
         if (requestStatus === Status.Succeeded){
             if (props.selectedCounties.length === 1 && rawData.length === 1) {
+                const d1Pop = 10000;
                 for (let x = 0; x < props.limit; x++) {
                     storage.push({
                         name: rawData[0][x].key,
-                        d1: rawData[0][x].doc_count,
+                        d1: (props.perCapita) ? (rawData[0][x].doc_count/d1Pop) : (rawData[0][x].doc_count),
                     })
                 }
             } else if (props.selectedCounties.length === 2 && rawData.length === 2) {
+                const d1Pop = 10000;
+                const d2Pop = 10000;
                 for (let x = 0; x < props.limit; x++) {
                     storage.push({
                         name: rawData[0][x].key,
-                        d1: rawData[0][x].doc_count,
-                        d2: rawData[1].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count,
+                        d1: (props.perCapita) ? (rawData[0][x].doc_count/d1Pop) : (rawData[0][x].doc_count),
+                        d2: (props.perCapita) ? (rawData[1].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count/d2Pop) : (rawData[1].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count),
                     })
                 }
             } else if (props.selectedCounties.length === 3 && rawData.length === 3) {
+                const d1Pop = 10000;
+                const d2Pop = 10000;
+                const d3Pop = 10000;
                 for (let x = 0; x < props.limit; x++) {
                     storage.push({
                         name: rawData[0][x].key,
-                        d1: rawData[0][x].doc_count,
-                        d2: rawData[1].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count,
-                        d3: rawData[2].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count,
+                        d1: (props.perCapita) ? (rawData[0][x].doc_count/d1Pop) : (rawData[0][x].doc_count),
+                        d2: (props.perCapita) ? (rawData[1].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count/d2Pop) : (rawData[1].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count),
+                        d3: (props.perCapita) ? (rawData[2].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count/d3Pop) : (rawData[2].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count),
                     })
                 }
             }
