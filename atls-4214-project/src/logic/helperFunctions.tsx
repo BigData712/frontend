@@ -1,4 +1,4 @@
-export function toTitleCase(input: String):String {
+gexport function toTitleCase(input: String):String {
         return (
                 input // Replace underscores with spaces
                 .split(' ') //split on spaces
@@ -7,200 +7,200 @@ export function toTitleCase(input: String):String {
                 );
         }
         
-        
+        // population values courtesy of https://www.colorado-demographics.com/counties_by_population
         export function getPopulation(input: string):number {
                 switch (input) {
                         case "Adams":
-                                return -1;
+                                return 514969;
                         
                         case "Alamosa":
-                                return -1;
+                                return 16377;
                         
                         case "Arapahoe":
-                                return -1;
+                                return 651621;
                         
                         case "Archuleta":
-                                return -1;
+                                return 13267;
                         
                         case "Baca":
-                                return -1;
+                                return 3519;
                         
                         case "Bent":
-                                return -1;
+                                return 5861;
                         
                         case "Boulder":
-                                return -1;
+                                return 328713;
                         
                         case "Broomfield":
-                                return -1;
+                                return 72697;
                         
                         case "Chaffee":
-                                return -1;
+                                return 19436;
                         
                         case "Cheyenne":
-                                return -1;
+                                return 1691;
                         
                         case "Clear Creek":
-                                return -1;
+                                return 9427;
                         
                         case "Conejos":
-                                return -1;
+                                return 7579;
                         
                         case "Crowley":
-                                return -1;
+                                return 6018;
                         
                         case "Custer":
-                                return -1;
+                                return 4720;
                         
                         case "Delta":
-                                return -1;
+                                return 31133;
                         
                         case "Denver":
-                                return -1;
+                                return 706799;
                         
                         case "Dolores":
-                                return -1;
+                                return 2288;
                         
                         case "Douglas":
-                                return -1;
+                                return 351929;
                         
                         case "Eagle":
-                                return -1;
+                                return 55693;
                         
                         case "El Paso":
-                                return -1;
+                                return 722736;
                         
                         case "Elbert":
-                                return -1;
+                                return 25897;
                         
                         case "Fremont":
-                                return -1;
+                                return 49007;
                         
                         case "Garfield":
-                                return -1;
+                                return 61221;
                         
                         case "Gilpin":
-                                return -1;
+                                return 5812;
                         
                         case "Grand":
-                                return -1;
+                                return 15629;
                         
                         case "Gunnison":
-                                return -1;
+                                return 16851;
                         
                         case "Hinsdale":
-                                return -1;
+                                return 858;
                         
                         case "Huerfano":
-                                return -1;
+                                return 6787;
                         
                         case "Jackson":
-                                return -1;
+                                return 1375;
                         
                         case "Jefferson":
-                                return -1;
+                                return 580130;
                         
                         case "Kiowa":
-                                return -1;
+                                return 1414;
                         
                         case "Kit Carson":
-                                return -1;
+                                return 7071;
                         
                         case "La Plata":
-                                return -1;
+                                return 55673;
                         
                         case "Lake":
-                                return -1;
+                                return 7417;
                         
                         case "Larimer":
-                                return -1;
+                                return 354670;
                         
                         case "Las Animas":
-                                return -1;
+                                return 14531;
                         
                         case "Lincoln":
-                                return -1;
+                                return 5630;
                         
                         case "Logan":
-                                return -1;
+                                return 21765;
                         
                         case "Mesa":
-                                return -1;
+                                return 154685;
                         
                         case "Mineral":
-                                return -1;
+                                return 794;
                         
                         case "Moffat":
-                                return -1;
+                                return 13240;
                         
                         case "Montezuma":
-                                return -1;
+                                return 25916;
                         
                         case "Montrose":
-                                return -1;
+                                return 42328;
                         
                         case "Morgan":
-                                return -1;
+                                return 28868;
                         
                         case "Not Specified":
-                                return -1;
+                                return 1;
                         
                         case "Otero":
-                                return -1;
+                                return 18665;
                         
                         case "Ouray":
-                                return -1;
+                                return 4850;
                         
                         case "Park":
-                                return -1;
+                                return 17384;
                         
                         case "Phillips":
-                                return -1;
+                                return 4497;
                         
                         case "Pitkin":
-                                return -1;
+                                return 17471;
                         
                         case "Prowers":
-                                return -1;
+                                return 11966;
                         
                         case "Pueblo":
-                                return -1;
+                                return 167453;
                         
                         case "Rio Blanco":
-                                return -1;
+                                return 6495;
                         
                         case "Rio Grande":
-                                return -1;
+                                return 11476;
                         
                         case "Routt":
-                                return -1;
+                                return 24899;
                         
                         case "Saguache":
-                                return -1;
+                                return 6369;
                         
                         case "San Juan":
-                                return -1;
+                                return 698;
                         
                         case "San Miguel":
-                                return -1;
+                                return 8084;
                         
                         case "Sedgwick":
-                                return -1;
+                                return 2459;
                         
                         case "Summit":
-                                return -1;
+                                return 31042;
                         
                         case "Teller":
-                                return -1;
+                                return 24607;
                         
                         case "Washington":
-                                return -1;
+                                return 4834;
                         
                         case "Weld":
-                                return -1;
+                                return 322424;
                         
                         case "Yuma":
-                                return -1;
+                                return 9944;
                 }
                 return -1;
         }
