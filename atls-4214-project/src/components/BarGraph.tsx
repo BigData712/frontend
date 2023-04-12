@@ -1,5 +1,5 @@
 import { retrieveDataSQL } from '@/logic/apiRequest';
-import { toTitleCase } from '@/logic/helperFunctions';
+import { getPopulation, toTitleCase } from '@/logic/helperFunctions';
 import { Status, colors } from '@/logic/types';
 import { Paper, Typography } from '@mui/material';
 import React from 'react';
@@ -82,7 +82,7 @@ export default function BarGraph(props: BarGraphProps) {
         const storage = []
         if (requestStatus === Status.Succeeded){
             if (props.selectedCounties.length === 1 && rawData.length === 1) {
-                const d1Pop = 10000;
+                const d1Pop = getPopulation(props.selectedCounties[0]);
                 for (let x = 0; x < props.limit; x++) {
                     storage.push({
                         name: rawData[0][x].key,
@@ -90,8 +90,8 @@ export default function BarGraph(props: BarGraphProps) {
                     })
                 }
             } else if (props.selectedCounties.length === 2 && rawData.length === 2) {
-                const d1Pop = 10000;
-                const d2Pop = 10000;
+                const d1Pop = getPopulation(props.selectedCounties[0]);
+                const d2Pop = getPopulation(props.selectedCounties[1]);
                 for (let x = 0; x < props.limit; x++) {
                     storage.push({
                         name: rawData[0][x].key,
@@ -100,9 +100,9 @@ export default function BarGraph(props: BarGraphProps) {
                     })
                 }
             } else if (props.selectedCounties.length === 3 && rawData.length === 3) {
-                const d1Pop = 10000;
-                const d2Pop = 10000;
-                const d3Pop = 10000;
+                const d1Pop = getPopulation(props.selectedCounties[0]);
+                const d2Pop = getPopulation(props.selectedCounties[1]);
+                const d3Pop = getPopulation(props.selectedCounties[2]);
                 for (let x = 0; x < props.limit; x++) {
                     storage.push({
                         name: rawData[0][x].key,

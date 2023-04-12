@@ -134,6 +134,7 @@ export default function Charts() {
                             control={
                                 <Switch 
                                     value={perCapita}
+                                    defaultChecked
                                     onChange={(event) => {
                                         setPerCapita(event.target.checked)
                                     }} 
