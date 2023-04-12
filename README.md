@@ -1,5 +1,21 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# Crime Crunch
+
+## About Crime Crunch
+Crime Crunch is a group project created for CU's ATLS 4214 - Big Data Architecture course. It is is an app designed to help Coloradans learn more about the different kinds of crimes occurring across the state. Utilizing data from the [FBI Crime Data Explorer](https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/home), users can view crime statistics from the various counties in Colorado and compare how types of crime compare or how they number reported has changed over time.
+
+Data is collected from the FBI Crime Data Explorer, which hosts data from the [Natiognal Incident-Based Reporting System (NIBRS)](https://www.fbi.gov/how-we-can-help-you/more-fbi-services-and-information/ucr/nibrs). The data used spans the years 2016-2021 as data stored in years prior to 2016 were stored with a different database schema. The data was transformed into a standardized format and uploaded via curl to AWS OpenSearch. At time of writing, this consists of 2.55 million records and is viewable on the RAW DATA page. OpenSearch can then be queried with SQL.
+
+For the project, it was deployed using [Render](https://render.com), a web service host that offered a free tier that was sufficient to build and deploy this project. 
+
+## Additional Resources
+[Link to data prparation methodology](https://github.com/BigData712/crime-data)
+
+[Link to OpenSearch Query code](https://github.com/BigData712/cc-api)
+
+# Running the Project Yourself
+
 ## Getting Started
 
 First, run the development server:
