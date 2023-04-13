@@ -204,3 +204,12 @@ export function toTitleCase(input: String):String {
                 }
                 return -1;
         }
+
+export const colors = [
+        "#F6CCD5",
+        "#C1C1DE",
+        "#C7DAEB",
+        "#D1E6D6",
+        "#F2EFD5",
+        "#F0E0D1"
+]

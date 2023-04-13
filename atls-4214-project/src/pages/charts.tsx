@@ -20,6 +20,7 @@ export default function Charts() {
     // Load County Options
     React.useEffect(() => {
        retrieveCountyList(setCounties, setCountyStatus);
+       setSelectedCounties([(localStorage.getItem("selectedCounty")) ? localStorage.getItem("selectedCounty")! : "Boulder"])
     },[]);
 
     // ** VISUALIZATIONS LIST **
