@@ -15,9 +15,8 @@ export default function AboutPage() {
                 }}
             >
                 <Paper 
-                    elevation={3}
+                    elevation={2}
                     style={{
-                        // maxWidth: '80vw',
                         margin: 'auto',
                         padding: '20px'
                     }}
@@ -26,16 +25,15 @@ export default function AboutPage() {
                         variant='h2'
                         textAlign='center'
                     >
-                        About Crime Crunch
+                        About
                     </Typography>
                 </Paper>
                 <br></br>
                 <Grid container spacing={2}>
                     <Grid item xs={6} md={7}>
                         <Paper
-                            elevation={0}
+                            elevation={3}
                             style={{
-                                // maxWidth: '67vw',
                                 margin: 'auto',
                                 padding: '20px',
                                 height: '40vh'
@@ -47,7 +45,7 @@ export default function AboutPage() {
                             >
                                 What is Crime Crunch?
                             </Typography>
-                            <br></br>
+                            <Divider/> <br/>
                             <Typography
                                 variant='body1'
                                 textAlign='left'
@@ -55,16 +53,14 @@ export default function AboutPage() {
                                 Crime Crunch is an app designed to help Coloradans learn more about the different kinds of crimes
                                 occurring across the state.  Utilizing data from the <a href="https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/home">FBI Crime Data Explorer</a>,
                                 users can view crime statistics from the various counties in Colorado and compare how types of crime compare or how they number reported has changed over time.  
-                                {/* <div style={{color: 'blue'}}> <b> wewo</b></div> */}
                             </Typography>
                             
                         </Paper>
                     </Grid>
                     <Grid item xs={6} md={5}>
                         <Paper
-                            elevation={0}
+                            elevation={3}
                             style={{
-                                // maxWidth: '67vw',
                                 margin: 'auto',
                                 padding: '20px',
                                 height: '40vh'
@@ -76,7 +72,7 @@ export default function AboutPage() {
                             >
                                 Why did we make Crime Crunch?
                             </Typography>
-                            <br></br>
+                            <Divider/> <br/>
                             <Typography
                                 variant='body1'
                                 textAlign='left'
@@ -90,34 +86,23 @@ export default function AboutPage() {
                     </Grid>
                 </Grid>
                 <br></br>
-                <Paper 
+                <Paper
                     elevation={3}
                     style={{
-                        // maxWidth: '80vw',
                         margin: 'auto',
-                        padding: '20px'
+                        padding: '20px',
+                        height: '40vh'
                     }}
                 >
-                    <Typography
-                        variant='h2'
-                        textAlign='center'
-                    >
-                        How it Works
-                    </Typography>
-                </Paper>
-                <br></br>
-                <Grid container spacing={2}>
-                    <Grid item xs={6} md={5}>
-                        <Paper
-                            elevation={0}
-                            style={{
-                                // maxWidth: '67vw',
-                                margin: 'auto',
-                                padding: '20px',
-                                height: '40vh'
-                            }}
-                        >
-                            
+                    <Grid container spacing={2}>
+                        <Grid item xs={6} md={5}>
+                            <Typography
+                                variant='h3'
+                                textAlign='left'
+                            >
+                                Where is the Data From?
+                            </Typography>
+                            <Divider/> <br/>image.png
                             <Typography
                                 variant='body1'
                                 textAlign='left'
@@ -127,80 +112,38 @@ export default function AboutPage() {
                                 OpenSearch.  At time of writing, this consists of 2.55 million records and is viewable on the <a href="https://crime-crunch-kwd2.onrender.com/data">RAW DATA</a> page. 
                                 OpenSearch can then be queried with SQL.
                             </Typography>
-                            
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={6} md={7}>
-                        <Paper
-                            elevation={0}
-                            style={{
-                                // maxWidth: '67vw',
-                                margin: 'auto',
-                                padding: '20px',
-                                height: '30vh'
-                            }}
-                        >
+                                
+                        </Grid>
+                        <Grid item xs={6} md={7}>
                             <div
                                 style={{
                                     position: 'relative',
-                                    width: '35vw',
-                                    height: '20vh',
+                                    width: '40vw',
+                                    height: '30vh',
                                     margin: 'auto',
                                     textAlign: 'center'
                                 }}
                             > 
                                 <Image style={{height: "100%", width:"100%"}}  src={'/Datastore.png'} alt="Data Pipeline" fill objectFit='contain'/> 
                             </div>
-                        </Paper>
+                        </Grid>
                     </Grid>
-                </Grid>
+                </Paper>
                 <br/>
                 <Paper 
                     elevation={3}
                     style={{
-                        // maxWidth: '80vw',
                         margin: 'auto',
                         padding: '20px'
                     }}
                 >
                     <Typography
-                        variant='h2'
+                        variant='h3'
                         textAlign='center'
                     >
                         Viewing the Data
                     </Typography>
-                </Paper>
-                <br/>
-                <Paper
-                    elevation={0}
-                    style={{
-                        // maxWidth: '67vw',
-                        margin: 'auto',
-                        padding: '20px',
-                        height: '30vh'
-                    }}
-                >
-                    <div
-                        style={{
-                            position: 'relative',
-                            width: '80vw',
-                            height: '27vh',
-                            margin: 'auto',
-                            textAlign: 'center'
-                        }}
-                    > 
-                        <Image style={{height: "100%", width:"100%"}}  src={'/Chartselect.png'} alt="Chart example" objectFit='contain' fill/> 
-                    </div>
-                </Paper>
-                <br/>
-                <Paper 
-                    elevation={0}
-                    style={{
-                        // maxWidth: '80vw',
-                        margin: 'auto',
-                        padding: '20px'
-                    }}
-                >
+                    <Divider/> <br/>
                     <Typography
                         variant='body1'
                         textAlign='left'
@@ -215,197 +158,195 @@ export default function AboutPage() {
                 <Paper 
                     elevation={3}
                     style={{
-                        // maxWidth: '80vw',
                         margin: 'auto',
                         padding: '20px'
                     }}
                 >
                     <Typography
-                        variant='h2'
+                        variant='h3'
                         textAlign='center'
                     >
                         Technologies Used
                     </Typography>
+                    <Divider/> <br/>
+                    <Grid container spacing={2}>
+                        <Grid item xs={6} md={3}>
+                            <Paper
+                                elevation={0}
+                                style={{
+                                    // maxWidth: '67vw',
+                                    margin: 'auto',
+                                    padding: '20px',
+                                    height: '20vh'
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        position: 'relative',
+                                        width: '10vw',
+                                        height: '10vw',
+                                        margin: 'auto',
+                                        textAlign: 'center'
+                                    }}
+                                > 
+                                    <Image loader={() => "https://opensearch.org/assets/opensearch-twitter-card.png"} style={{height: "100%", width:"100%"}}  src={'https://opensearch.org/assets/opensearch-twitter-card.png'} alt="OpenSearch" fill/> 
+                                </div>
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={6} md={3}>
+                            <Paper
+                                elevation={0}
+                                style={{
+                                    // maxWidth: '67vw',
+                                    margin: 'auto',
+                                    padding: '20px',
+                                    height: '20vh'
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        position: 'relative',
+                                        width: '10vw',
+                                        height: '10vw',
+                                        margin: 'auto',
+                                        textAlign: 'center'
+                                    }}
+                                > 
+                                    <Image src={'/next.svg'} alt="NextJS" fill/> 
+                                    </div>
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={6} md={3}>
+                            <Paper
+                                elevation={0}
+                                style={{
+                                    // maxWidth: '67vw',
+                                    margin: 'auto',
+                                    padding: '20px',
+                                    height: '20vh'
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        position: 'relative',
+                                        width: '11.5vw',
+                                        height: '10vw',
+                                        margin: 'auto',
+                                        textAlign: 'center'
+                                    }}
+                                > 
+                                <Image loader={() => "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1150px-React-icon.svg.png"} style={{height: "100%", width:"100%"}}  src={'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png'} alt="React" fill/> 
+                                </div>
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={6} md={3}>
+                            <Paper
+                                elevation={0}
+                                style={{
+                                    // maxWidth: '67vw',
+                                    margin: 'auto',
+                                    padding: '20px',
+                                    height: '20vh'
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        position: 'relative',
+                                        width: '10vw',
+                                        height: '10vw',
+                                        margin: 'auto',
+                                        textAlign: 'center'
+                                    }}
+                                > 
+                                    <Image loader={() => "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png"} style={{height: "100%", width:"100%"}}  src={'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png'} alt="Python" fill/> 
+                                
+                                    </div>
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={6} md={4}>
+                            <Paper
+                                elevation={0}
+                                style={{
+                                    // maxWidth: '67vw',
+                                    margin: 'auto',
+                                    padding: '20px',
+                                    height: '20vh'
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        position: 'relative',
+                                        width: '8vw',
+                                        height: '8vw',
+                                        margin: 'auto',
+                                        textAlign: 'center'
+                                    }}
+                                > 
+                                    <Image loader={() => "https://cdn-icons-png.flaticon.com/512/25/25231.png"} style={{height: "100%", width:"100%"}}  src={'https://cdn-icons-png.flaticon.com/512/25/25231.png'} alt="GitHub" fill/> 
+                                
+                                    </div>
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={6} md={4}>
+                            <Paper
+                                elevation={0}
+                                style={{
+                                    // maxWidth: '67vw',
+                                    margin: 'auto',
+                                    padding: '20px',
+                                    height: '20vh'
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        position: 'relative',
+                                        width: '18vw',
+                                        height: '9.45vw',
+                                        margin: 'auto',
+                                        textAlign: 'center'
+                                    }}
+                                > 
+                                    <Image loader={() => "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"} style={{height: "100%", width:"100%"}}  src={'https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png'} alt="AWS" fill/> 
+                                
+                                    </div>
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={6} md={4}>
+                            <Paper
+                                elevation={0}
+                                style={{
+                                    // maxWidth: '67vw',
+                                    margin: 'auto',
+                                    padding: '20px',
+                                    height: '20vh'
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        position: 'relative',
+                                        width: '9vw',
+                                        height: '9vw',
+                                        margin: 'auto',
+                                        textAlign: 'center'
+                                    }}
+                                > 
+                                    <Image loader={() => "https://avatars.githubusercontent.com/u/42682871?s=200&v=4"} style={{height: "100%", width:"100%"}}  src={'https://avatars.githubusercontent.com/u/42682871?s=200&v=4'} alt="Render" fill/> 
+                                
+                                    </div>
+                            </Paper>
+                        </Grid>
+                    </Grid>
                 </Paper>
-                <br/>
-                <Grid container spacing={2}>
-                    <Grid item xs={6} md={3}>
-                        <Paper
-                            elevation={0}
-                            style={{
-                                // maxWidth: '67vw',
-                                margin: 'auto',
-                                padding: '20px',
-                                height: '20vh'
-                            }}
-                        >
-                            <div
-                                style={{
-                                    position: 'relative',
-                                    width: '10vw',
-                                    height: '10vw',
-                                    margin: 'auto',
-                                    textAlign: 'center'
-                                }}
-                            > 
-                                <Image loader={() => "https://opensearch.org/assets/opensearch-twitter-card.png"} style={{height: "100%", width:"100%"}}  src={'https://opensearch.org/assets/opensearch-twitter-card.png'} alt="OpenSearch" fill/> 
-                            </div>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={6} md={3}>
-                        <Paper
-                            elevation={0}
-                            style={{
-                                // maxWidth: '67vw',
-                                margin: 'auto',
-                                padding: '20px',
-                                height: '20vh'
-                            }}
-                        >
-                            <div
-                                style={{
-                                    position: 'relative',
-                                    width: '10vw',
-                                    height: '10vw',
-                                    margin: 'auto',
-                                    textAlign: 'center'
-                                }}
-                            > 
-                                <Image src={'/next.svg'} alt="NextJS" fill/> 
-                                </div>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={6} md={3}>
-                        <Paper
-                            elevation={0}
-                            style={{
-                                // maxWidth: '67vw',
-                                margin: 'auto',
-                                padding: '20px',
-                                height: '20vh'
-                            }}
-                        >
-                            <div
-                                style={{
-                                    position: 'relative',
-                                    width: '11.5vw',
-                                    height: '10vw',
-                                    margin: 'auto',
-                                    textAlign: 'center'
-                                }}
-                            > 
-                               <Image loader={() => "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1150px-React-icon.svg.png"} style={{height: "100%", width:"100%"}}  src={'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png'} alt="React" fill/> 
-                            </div>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={6} md={3}>
-                        <Paper
-                            elevation={0}
-                            style={{
-                                // maxWidth: '67vw',
-                                margin: 'auto',
-                                padding: '20px',
-                                height: '20vh'
-                            }}
-                        >
-                            <div
-                                style={{
-                                    position: 'relative',
-                                    width: '10vw',
-                                    height: '10vw',
-                                    margin: 'auto',
-                                    textAlign: 'center'
-                                }}
-                            > 
-                                <Image loader={() => "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png"} style={{height: "100%", width:"100%"}}  src={'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png'} alt="Python" fill/> 
-                            
-                                </div>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={6} md={4}>
-                        <Paper
-                            elevation={0}
-                            style={{
-                                // maxWidth: '67vw',
-                                margin: 'auto',
-                                padding: '20px',
-                                height: '20vh'
-                            }}
-                        >
-                            <div
-                                style={{
-                                    position: 'relative',
-                                    width: '8vw',
-                                    height: '8vw',
-                                    margin: 'auto',
-                                    textAlign: 'center'
-                                }}
-                            > 
-                                <Image loader={() => "https://cdn-icons-png.flaticon.com/512/25/25231.png"} style={{height: "100%", width:"100%"}}  src={'https://cdn-icons-png.flaticon.com/512/25/25231.png'} alt="GitHub" fill/> 
-                            
-                                </div>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={6} md={4}>
-                        <Paper
-                            elevation={0}
-                            style={{
-                                // maxWidth: '67vw',
-                                margin: 'auto',
-                                padding: '20px',
-                                height: '20vh'
-                            }}
-                        >
-                            <div
-                                style={{
-                                    position: 'relative',
-                                    width: '18vw',
-                                    height: '9.45vw',
-                                    margin: 'auto',
-                                    textAlign: 'center'
-                                }}
-                            > 
-                                <Image loader={() => "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"} style={{height: "100%", width:"100%"}}  src={'https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png'} alt="AWS" fill/> 
-                            
-                                </div>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={6} md={4}>
-                        <Paper
-                            elevation={0}
-                            style={{
-                                // maxWidth: '67vw',
-                                margin: 'auto',
-                                padding: '20px',
-                                height: '20vh'
-                            }}
-                        >
-                            <div
-                                style={{
-                                    position: 'relative',
-                                    width: '9vw',
-                                    height: '9vw',
-                                    margin: 'auto',
-                                    textAlign: 'center'
-                                }}
-                            > 
-                                <Image loader={() => "https://avatars.githubusercontent.com/u/42682871?s=200&v=4"} style={{height: "100%", width:"100%"}}  src={'https://avatars.githubusercontent.com/u/42682871?s=200&v=4'} alt="Render" fill/> 
-                            
-                                </div>
-                        </Paper>
-                    </Grid>
-                </Grid>
                 <br/>
                 <Paper 
                     elevation={3}
                     style={{
-                        // maxWidth: '80vw',
                         margin: 'auto',
                         padding: '20px'
                     }}
                 >
                     <Typography
-                        variant='h2'
+                        variant='h3'
                         textAlign='center'
                     >
                         Additional Resources
