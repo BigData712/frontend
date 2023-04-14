@@ -28,94 +28,107 @@ export default function AboutPage() {
                         About
                     </Typography>
                 </Paper>
-                <br></br>
-                <Grid container spacing={2}>
-                    <Grid item xs={6} md={7}>
-                        <Paper
-                            elevation={3}
-                            style={{
-                                margin: 'auto',
-                                padding: '20px',
-                                height: '40vh'
-                            }}
-                        >
-                            <Typography
-                                variant='h3'
-                                textAlign='left'
+                <br/>
+                <div
+                    style={{
+                        height: 'fit-content'
+                    }}
+                >
+                    <Grid container spacing={2}>
+                        <Grid item xs={6} md={6}>
+                            <Paper
+                                elevation={3}
+                                style={{
+                                    margin: 'auto',
+                                    padding: '20px',
+                                    height: '100%'
+                                }}
                             >
-                                What is Crime Crunch?
-                            </Typography>
-                            <Divider/> <br/>
-                            <Typography
-                                variant='body1'
-                                textAlign='left'
+                                <Typography
+                                    variant='h4'
+                                    textAlign='center'
+                                >
+                                    What is Crime Crunch?
+                                </Typography>
+                                <Divider/> <br/>
+                                <Typography
+                                    variant='body1'
+                                    textAlign='left'
+                                >
+                                    Crime Crunch is an app designed to help Coloradans learn more about the different kinds of crimes
+                                    occurring across the state.  Utilizing data from the <a href="https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/home">FBI Crime Data Explorer</a>,
+                                    users can view crime statistics from the various counties in Colorado and compare how types of crime compare or how they number reported has changed over time.  
+                                </Typography>
+                                
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={6} md={6}>
+                            <Paper
+                                elevation={3}
+                                style={{
+                                    margin: 'auto',
+                                    padding: '20px',
+                                    height: '100%'
+                                }}
                             >
-                                Crime Crunch is an app designed to help Coloradans learn more about the different kinds of crimes
-                                occurring across the state.  Utilizing data from the <a href="https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/home">FBI Crime Data Explorer</a>,
-                                users can view crime statistics from the various counties in Colorado and compare how types of crime compare or how they number reported has changed over time.  
-                            </Typography>
-                            
-                        </Paper>
+                                <Typography
+                                    variant='h4'
+                                    textAlign='center'
+                                >
+                                    Why did we make Crime Crunch?
+                                </Typography>
+                                <Divider/> <br/>
+                                <Typography
+                                    variant='body1'
+                                    textAlign='left'
+                                >
+                                    With reports of crimes on the rise, particularly in the cases of hate crimes and those involving violence, 
+                                    it is important for residents to be aware and informed on what is happening around them. Part of this is 
+                                    knowing current and historic trends to help inform actions taken, both in daily life and in politics. 
+                                </Typography>
+                                
+                            </Paper>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={6} md={5}>
-                        <Paper
-                            elevation={3}
-                            style={{
-                                margin: 'auto',
-                                padding: '20px',
-                                height: '40vh'
-                            }}
-                        >
-                            <Typography
-                                variant='h4'
-                                textAlign='left'
-                            >
-                                Why did we make Crime Crunch?
-                            </Typography>
-                            <Divider/> <br/>
-                            <Typography
-                                variant='body1'
-                                textAlign='left'
-                            >
-                                With reports of crimes on the rise, particularly in the cases of hate crimes and those involving violence, 
-                                it is important for residents to be aware and informed on what is happening around them. Part of this is 
-                                knowing current and historic trends to help inform actions taken, both in daily life and in politics. 
-                            </Typography>
-                            
-                        </Paper>
-                    </Grid>
-                </Grid>
-                <br></br>
-                <Paper
+                </div>
+                <br/>
+                <Paper 
                     elevation={3}
                     style={{
                         margin: 'auto',
                         padding: '20px',
-                        height: '40vh'
+                        height: 'fit-content'
                     }}
                 >
-                    <Grid container spacing={2}>
+                    <Typography
+                        variant='h4'
+                        textAlign='center'
+                    >
+                        Where is the Data From?
+                    </Typography>
+                    <Divider/> <br/>
+                    <Grid container alignItems="center">
                         <Grid item xs={6} md={5}>
-                            <Typography
-                                variant='h3'
-                                textAlign='left'
-                            >
-                                Where is the Data From?
-                            </Typography>
-                            <Divider/> <br/>image.png
-                            <Typography
-                                variant='body1'
-                                textAlign='left'
-                            >
-                                Data is collected from the FBI&apos;s Crime Data Explorer, which hosts data from the Natiognal Incident-Based Reporting System (NIBRS).  The data used spans the years 2016-2021 
-                                as data stored in years prior to 2016 were stored with a different database schema.  The data was transformed into a standardized format and uploaded via curl to AWS 
-                                OpenSearch.  At time of writing, this consists of 2.55 million records and is viewable on the <a href="https://crime-crunch-kwd2.onrender.com/data">RAW DATA</a> page. 
-                                OpenSearch can then be queried with SQL.
-                            </Typography>
-                                
+                        <Typography 
+                            variant="body1" 
+                            align="left"
+                        >
+                            Data is collected from the FBI&apos;s Crime Data Explorer, which hosts data from the Natiognal Incident-Based Reporting System (NIBRS).  The data used spans the years 2016-2021 
+                            as data stored in years prior to 2016 were stored with a different database schema.  The data was transformed into a standardized format and uploaded via curl to AWS 
+                            OpenSearch.  At time of writing, this consists of 2.55 million records and is viewable on the <a href="https://crime-crunch-kwd2.onrender.com/data">RAW DATA</a> page. 
+                            OpenSearch can then be queried with SQL.
+                        </Typography>
+                        <br/>
+                        <Typography 
+                            variant="body1" 
+                            align="left"
+                        >
+                            OpenSearch has support for either SQL or their own query domain-specific language(DSL).  For this project, queries from the frontend are provided to the data store as SQL queries, 
+                            which return the aggregated results back to the frontend to be used in visualization and comparison. 
+                        </Typography>
                         </Grid>
                         <Grid item xs={6} md={7}>
-                            <div
+                        <div
                                 style={{
                                     position: 'relative',
                                     width: '40vw',
@@ -138,7 +151,7 @@ export default function AboutPage() {
                     }}
                 >
                     <Typography
-                        variant='h3'
+                        variant='h4'
                         textAlign='center'
                     >
                         Viewing the Data
@@ -163,7 +176,7 @@ export default function AboutPage() {
                     }}
                 >
                     <Typography
-                        variant='h3'
+                        variant='h4'
                         textAlign='center'
                     >
                         Technologies Used
@@ -346,7 +359,7 @@ export default function AboutPage() {
                     }}
                 >
                     <Typography
-                        variant='h3'
+                        variant='h4'
                         textAlign='center'
                     >
                         Additional Resources
