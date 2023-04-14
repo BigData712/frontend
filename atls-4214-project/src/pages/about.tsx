@@ -353,11 +353,11 @@ export default function AboutPage() {
                     </Typography>
                     <Divider/> <br/>
                     <Stack direction="row" spacing={2} justifyContent='center'>
-                    <Button href="https://github.com/BigData712">GitHub</Button>
-                    <Button href="https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/home">Data</Button>
-                    <Button href="https://www.colorado-demographics.com/counties_by_population">CO Population Demographics</Button>
-                    <Button href="https://ucr.fbi.gov/nibrs/2012/resources/nibrs-offense-definitions">NIBRS Offense Definitions</Button>
-                    <Button href="https://www.fbi.gov/how-we-can-help-you/more-fbi-services-and-information/ucr/nibrs">NIBRS Resources</Button>
+                        <Button href="https://github.com/BigData712">GitHub</Button>
+                        <Button href="https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/home">Data</Button>
+                        <Button href="https://www.colorado-demographics.com/counties_by_population">CO Population Demographics</Button>
+                        <Button href="https://ucr.fbi.gov/nibrs/2012/resources/nibrs-offense-definitions">NIBRS Offense Definitions</Button>
+                        <Button href="https://www.fbi.gov/how-we-can-help-you/more-fbi-services-and-information/ucr/nibrs">NIBRS Resources</Button>
                     </Stack>
                 </Paper>
                 

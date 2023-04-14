@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import { Box, Button, Container, Divider, Paper, Typography } from '@mui/material'
+import { Box, Button, Container, Divider, Paper, Stack, Typography } from '@mui/material'
 import CountyMap from '@/components/countyMap'
 import router from 'next/router'
 
@@ -18,10 +18,11 @@ export default function Home() {
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <Paper
-      elevation={0}
+      elevation={3}
       style={{
-        margin: 'auto',
-        padding: '20px'
+        padding: 15,
+        maxWidth: '80vw',
+        margin: 'auto'
       }}
     >
       <Typography
@@ -31,7 +32,7 @@ export default function Home() {
         Welcome to Crime Crunch!
       </Typography>
     </Paper>
-      
+    <br/>
     <Box sx={{ flexGrow: 1 }}>
       <Container maxWidth="md">
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -44,53 +45,65 @@ export default function Home() {
             }}
         />
         </Box>
-        <Box
-          textAlign={'right'}
+        <br/>
+      </Container>
+    </Box>
+    <div
+      style={{
+          padding: 15,
+          maxWidth: '80vw',
+          margin: 'auto'
+      }}
+    >
+      <Paper 
+        elevation={3}
+        style={{
+            margin: 'auto',
+            padding: '20px'
+        }}
+      >
+        <Typography
+            variant='h3'
+            textAlign='center'
         >
-           <Typography variant="body2" gutterBottom>
-            Image Source:  <a href="https://ccionline.org/info-center-library/maps/">Colorado Counties, Inc.</a>
-          </Typography>
-        </Box>
-        <Box sx={{ my: 4 }}>
-          <Typography variant="h4" component="h2" gutterBottom>
             Background
-          </Typography>
-          <Typography variant="body1" gutterBottom>
+        </Typography>
+        <Divider/> <br/>
+        <Typography
+            variant='body1'
+            textAlign='left'
+        >
             Crime Crunch is a project created for ATLS 4214 - Big Data Architecture.  It utilizes data collected from 
             the National Incident-Based Reporting System (NIBRS) aggregated on the FBI Crime Data Explorer to provide 
             statistics and analysis of crime trends across Colorado. 
-          </Typography>
-          <br/>
-          <Typography variant="body1" gutterBottom>
-            To get started using Crime Cruncher, go to the &apos;CHARTS&apos; page to see statistics about different counties or
-            head to the &apos;ABOUT&apos; page to learn more about the project and how it works. 
-          </Typography>
-        </Box>
-        <Paper
-          elevation={0}
-          style={{
-            margin: 'auto',
-            padding: '20px'
-          }}
+        </Typography>
+        <br/>
+        <Typography variant="body1" gutterBottom>
+          To get started using Crime Cruncher, go to the &apos;CHARTS&apos; page to see statistics about different counties or
+          head to the &apos;ABOUT&apos; page to learn more about the project and how it works. 
+        </Typography>
+      </Paper>
+      <br/>
+      <Paper
+        elevation={3}
+        style={{
+          margin: 'auto',
+          padding: '20px'
+        }}
+      >
+        <Typography
+          variant='h4'
+          textAlign='center'
         >
-          <Typography
-            variant='h4'
-            textAlign='center'
-          >
-            Project Management
-          </Typography>
-        </Paper>
+          Project Management
+        </Typography>
         <Divider/> <br/>
-        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-          <Button variant="outlined" href="https://github.com/BigData712" target="_blank" rel="noopener">
-            GitHub Org
-          </Button>
-          <Button variant="outlined" href="https://github.com/orgs/BigData712/projects/1" target="_blank" rel="noopener" sx={{ ml: 2 }}>
-            Kanban
-          </Button>
-        </Box>
-      </Container>
-    </Box>
+        <Stack direction="row" spacing={2} justifyContent='center'>
+          <Button href="https://github.com/BigData712">GitHub</Button>
+          <Button href="https://github.com/orgs/BigData712/projects/1">Kanban</Button>
+      </Stack>
+      </Paper>
+    </div>
     <br/>
     </>
   )
