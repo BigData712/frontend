@@ -52,7 +52,7 @@ export default function Charts() {
         />,
         <BarGraph 
             key='top hour' 
-            title='crime reports grouped by hour of day'
+            title='crime reports by hour of day'
             selectedCounties={selectedCounties}  
             sql='SELECT * FROM $CITY GROUP BY inc_time.inc_hour'
             prefix={['aggregations','inc_time.inc_hour','buckets']}
@@ -71,6 +71,57 @@ export default function Charts() {
             width='77vw'
             height='45vh'
             limit={6}
+            perCapita={perCapita}
+            sort
+        />,
+        // These two Line Graphs get Unhandled Runtime Error, TypeError: undefined is not an object (evaluating 'rawdata[0][x].key') for some counties (one of them is Pueblo)
+        <LineGraph
+            key='yearly hatecrimes'
+            title='hate crimes by year'
+            selectedCounties={selectedCounties}
+            sql='SELECT * FROM $CITY WHERE hate_crime = true GROUP BY inc_time.inc_year'
+            prefix={['aggregations','inc_time.inc_year','buckets']}
+            width='77vw'
+            height='45vh'
+            limit={6}
+            perCapita={perCapita}
+            sort
+        />,
+        <BarGraph 
+            key='hate crime types' 
+            title='most common types of hate crimes'
+            selectedCounties={selectedCounties}  
+            sql='SELECT * FROM $CITY WHERE hate_crime = true GROUP BY crime_desc'
+            prefix={['aggregations','crime_desc.keyword','buckets']}
+            width='77vw'
+            height='45vh'
+            limit={5}
+            perCapita={perCapita}
+            sort
+        />,
+        <LineGraph
+            key='yearly sex crimes'
+            title='sex crimes by year'
+            selectedCounties={selectedCounties}
+            sql='SELECT * FROM $CITY WHERE sex_crime = true GROUP BY inc_time.inc_year'
+            prefix={['aggregations','inc_time.inc_year','buckets']}
+            width='77vw'
+            height='45vh'
+            limit={6}
+            perCapita={perCapita}
+            sort
+        />,
+        // this one seems fine, I tested it with a bunch of the weird counties 
+        // would it be possible to have the sex/hate crime line and bar chart side by side? I can't seem to figure out how to do that
+        <BarGraph 
+            key='sex crime types' 
+            title='breakdown of sex crimes'
+            selectedCounties={selectedCounties}  
+            sql='SELECT * FROM $CITY WHERE sex_crime = true GROUP BY crime_desc'
+            prefix={['aggregations','crime_desc.keyword','buckets']}
+            width='77vw'
+            height='45vh'
+            limit={6} // there are 6 categories of sex crime
             perCapita={perCapita}
             sort
         />

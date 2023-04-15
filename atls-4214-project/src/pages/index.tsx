@@ -88,7 +88,7 @@ export default function Home() {
           variant="body1"  
           gutterBottom
         >
-          To get started using Crime Cruncher, go to the &apos;CHARTS&apos; page to see statistics about different counties or
+          To get started using Crime Crunch, go to the &apos;CHARTS&apos; page to see statistics about different counties or
           head to the &apos;ABOUT&apos; page to learn more about the project and how it works. 
         </Typography>
       </Paper>
