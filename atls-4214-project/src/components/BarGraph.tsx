@@ -79,44 +79,47 @@ export default function BarGraph(props: BarGraphProps) {
         getData();
     }, [props])
     React.useEffect(() => {
-        const storage = []
-        if (requestStatus === Status.Succeeded){
-            if (props.selectedCounties.length === 1 && rawData.length === 1) {
-                const d1Pop = getPopulation(props.selectedCounties[0]);
-                for (let x = 0; x < props.limit; x++) {
-                    storage.push({
-                        name: rawData[0][x].key,
-                        d1: (props.perCapita) ? (rawData[0][x].doc_count/d1Pop) : (rawData[0][x].doc_count),
-                    })
-                }
-            } else if (props.selectedCounties.length === 2 && rawData.length === 2) {
-                const d1Pop = getPopulation(props.selectedCounties[0]);
-                const d2Pop = getPopulation(props.selectedCounties[1]);
-                for (let x = 0; x < props.limit; x++) {
-                    storage.push({
-                        name: rawData[0][x].key,
-                        d1: (props.perCapita) ? (rawData[0][x].doc_count/d1Pop) : (rawData[0][x].doc_count),
-                        d2: (props.perCapita) ? (rawData[1].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count/d2Pop) : (rawData[1].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count),
-                    })
-                }
-            } else if (props.selectedCounties.length === 3 && rawData.length === 3) {
-                const d1Pop = getPopulation(props.selectedCounties[0]);
-                const d2Pop = getPopulation(props.selectedCounties[1]);
-                const d3Pop = getPopulation(props.selectedCounties[2]);
-                for (let x = 0; x < props.limit; x++) {
-                    storage.push({
-                        name: rawData[0][x].key,
-                        d1: (props.perCapita) ? (rawData[0][x].doc_count/d1Pop) : (rawData[0][x].doc_count),
-                        d2: (props.perCapita) ? (rawData[1].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count/d2Pop) : (rawData[1].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count),
-                        d3: (props.perCapita) ? (rawData[2].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count/d3Pop) : (rawData[2].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count),
-                    })
+        setTimeout(() => {
+            const storage = []
+            if (requestStatus === Status.Succeeded){
+                console.log(rawData)
+                if (props.selectedCounties.length === 1 && rawData.length === 1) {
+                    const d1Pop = getPopulation(props.selectedCounties[0]);
+                    for (let x = 0; x < props.limit; x++) {
+                        storage.push({
+                            name: rawData[0][x].key,
+                            d1: (props.perCapita) ? (rawData[0][x].doc_count/d1Pop) : (rawData[0][x].doc_count),
+                        })
+                    }
+                } else if (props.selectedCounties.length === 2 && rawData.length === 2) {
+                    const d1Pop = getPopulation(props.selectedCounties[0]);
+                    const d2Pop = getPopulation(props.selectedCounties[1]);
+                    for (let x = 0; x < props.limit; x++) {
+                        storage.push({
+                            name: rawData[0][x].key,
+                            d1: (props.perCapita) ? (rawData[0][x].doc_count/d1Pop) : (rawData[0][x].doc_count),
+                            d2: (props.perCapita) ? (rawData[1].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count/d2Pop) : (rawData[1].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count),
+                        })
+                    }
+                } else if (props.selectedCounties.length === 3 && rawData.length === 3) {
+                    const d1Pop = getPopulation(props.selectedCounties[0]);
+                    const d2Pop = getPopulation(props.selectedCounties[1]);
+                    const d3Pop = getPopulation(props.selectedCounties[2]);
+                    for (let x = 0; x < props.limit; x++) {
+                        storage.push({
+                            name: rawData[0][x].key,
+                            d1: (props.perCapita) ? (rawData[0][x].doc_count/d1Pop) : (rawData[0][x].doc_count),
+                            d2: (props.perCapita) ? (rawData[1].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count/d2Pop) : (rawData[1].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count),
+                            d3: (props.perCapita) ? (rawData[2].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count/d3Pop) : (rawData[2].find((curr:any) => (curr.key === rawData[0][x].key))?.doc_count),
+                        })
+                    }
                 }
             }
-        }
-        if (props.sort) {
-            storage.sort((a,b) => (a.name < b.name) ? -1 : 0)
-        }
-        setProcessedData(storage);
+            if (props.sort) {
+                storage.sort((a,b) => (a.name < b.name) ? -1 : 0)
+            }
+            setProcessedData(storage);
+        }, 100);
     }, [rawData])
 
     return (
