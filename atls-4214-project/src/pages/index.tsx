@@ -36,6 +36,22 @@ export default function Home() {
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         </Box>
         <br/>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+           <div
+             style={{
+                 position: 'relative',
+                 width: '70vw',
+                 height: '60vh',
+                 margin: 'auto',
+                 textAlign: 'center'
+             }}
+         > 
+           <Image loader={() => "https://ccionline.org/wp-content/uploads/2021/02/CCI-District-Map-2020.png"} style={{height: "100%", width:"100%"}}  src={'https://ccionline.org/wp-content/uploads/2021/02/CCI-District-Map-2020.png://opensearch.org/assets/opensearch-twitter-card.png'} alt="Colorado Counties" fill/> 
+         </div>
+         </Box>
+         <Typography variant="body2" gutterBottom textAlign='right'>
+             Image Source:  <a href="https://ccionline.org/info-center-library/maps/">Colorado Counties, Inc.</a>
+           </Typography>
       </Container>
     </Box>
     <div

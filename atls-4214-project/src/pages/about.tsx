@@ -161,7 +161,7 @@ export default function AboutPage() {
                         variant='body1'
                         textAlign='left'
                     >
-                        Crime statistics based on the collected data can be viewed on the <a href="https://crime-crunch-kwd2.onrender.com/charts">CHARTS</a> page.  Users can select 
+                        Crime statistics based on the collected data can be viewed on the <a href="https://crime-crunch-kwd2.onrender.com/charts">CHARTS</a> page.  Using the interactive map, users can select 
                         which county they would like to view, up to three counties at at time.  The site will then query OpenSearch and display relevant statistics such as most
                         common crimes, most common crime locations, crime frequency by time of day, and volume of crimes year over year. These visualizations can help users get a 
                         better understanding of what kinds of crime are happening where and how their frequency may be changing over time. 
