@@ -128,7 +128,7 @@ export default function LineGraph(props: LineGraphProps) {
     }, [rawData])
 
     function getLast(value:string) {
-        return rawData[0][rawData.length-1].key === value
+        return (rawData.length > 0) ? (rawData[0][rawData.length-1].key === value) : (false)
     }
 
     return (

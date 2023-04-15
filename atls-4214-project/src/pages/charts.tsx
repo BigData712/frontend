@@ -1,11 +1,13 @@
 import BarGraph from '@/components/BarGraph';
 import LineGraph from '@/components/LineGraph';
+import CountyMap from '@/components/countyMap';
 import CountySelector from '@/components/countySelector';
 import Loading from '@/components/loading';
 import { retrieveCountyList, retrieveDataSQL } from '@/logic/apiRequest';
 import { Status } from '@/logic/types';
 import { AddCircle, RemoveCircle } from '@mui/icons-material';
 import { FormControlLabel, FormGroup, IconButton, Paper, Switch, Typography } from '@mui/material'
+import router from 'next/router';
 import React from 'react'
 
 
@@ -13,15 +15,16 @@ export default function Charts() {
     // ** STATE **
     const [counties, setCounties] = React.useState<string[]>([]);
     const [countyStatus, setCountyStatus] = React.useState(Status.Initial);
-    const [selectedCounties, setSelectedCounties] = React.useState<string[]>(["Boulder"]);
+    const [selectedCounties, setSelectedCounties] = React.useState<string[]>([]);
     const [perCapita, setPerCapita] = React.useState(true);
 
     // ** USE EFFECT **
     // Load County Options
     React.useEffect(() => {
        retrieveCountyList(setCounties, setCountyStatus);
-       setSelectedCounties([(localStorage.getItem("selectedCounty")) ? localStorage.getItem("selectedCounty")! : "Boulder"])
     },[]);
+
+    const maxCounties = 3;
 
     // ** VISUALIZATIONS LIST **
     const visualizations:React.ReactElement[] = [
@@ -91,47 +94,20 @@ export default function Charts() {
                     padding: '20px'
                 }}
             >
-                <Typography variant='h2' align='center'>Charts</Typography>
-                <Typography variant='body1' align='center'>Select County of Interest:</Typography>
                 <div
                     style={{
                         justifyContent: 'center',
                         alignItems: 'center',
-                        display: 'flex'
+                        display: 'flex',
+                        position: 'relative'
                     }}
                 >
-                    {selectedCounties.map((curr, idx) => (
-                        <CountySelector 
-                            key={idx} 
-                            counties={counties} 
-                            selectedCounties={selectedCounties} 
-                            setSelectedCounties={setSelectedCounties}
-                            idx={idx} 
-                        />
-                    ))}
-                    
                     <div>
-                    <IconButton 
-                        color= 'primary'
-                        onClick={() => {
-                            setSelectedCounties(selectedCounties.splice(0,selectedCounties.length-1))
-                        }}
-                        disabled = {selectedCounties.length <= 1}
-                    >
-                        <RemoveCircle />
-                    </IconButton>
-                    <IconButton 
-                        color= 'primary'
-                        onClick={() => {
-                            //get not selected county list
-                            const notSelected = counties.filter((curr) => (!selectedCounties.includes(curr)));
-                            setSelectedCounties([...selectedCounties, notSelected[Math.floor(Math.random() * notSelected.length)]]);
-                        }}
-                        disabled = {selectedCounties.length >= 3}
-                    >
-                        <AddCircle />
-                    </IconButton>
-                        <FormControlLabel 
+                <Typography variant='h2' align='center'>Charts</Typography>
+                <Typography variant='body1' align='center'>Select County of Interest:</Typography>
+                </div>
+                <FormControlLabel 
+                    style={{position: 'absolute', right: 0}}
                             control={
                                 <Switch 
                                     value={perCapita}
@@ -143,7 +119,33 @@ export default function Charts() {
                             } 
                             label="Per Capita" 
                         />
-                    </div>
+                </div>
+                            <div 
+                                style={{
+                                    maxWidth: "33vw",
+                                    margin: 'auto'
+                                }}
+                            >
+                            <CountyMap
+                                
+                                clickFunction={(event: any) => {
+                                    event.preventDefault()
+                                    if (selectedCounties.includes(event.target.id.replaceAll('-', ' '))) {
+                                        setSelectedCounties(
+                                            (selectedCounties.filter((curr) => curr != event.target.id.replaceAll('-', ' ')).length > 0) ? 
+                                            (selectedCounties.filter((curr) => curr != event.target.id.replaceAll('-', ' '))) : 
+                                            ([])
+                                        );
+                                    } else if (selectedCounties.length < maxCounties) {
+                                        setSelectedCounties([... selectedCounties, event.target.id.replaceAll('-', ' ')])
+                                    }
+                                }}
+                                selectedCounties={selectedCounties}
+                                numMaxCounties={3}
+                            />
+                        </div>
+                    <div>
+                        
                 </div>
             </Paper>
             </div>

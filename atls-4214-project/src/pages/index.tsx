@@ -2,9 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import { Box, Button, Container, Divider, Paper, Stack, Typography } from '@mui/material'
-import CountyMap from '@/components/countyMap'
-import router from 'next/router'
+import { Box, Button, Container, Divider, Paper, Typography } from '@mui/material'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -36,14 +34,6 @@ export default function Home() {
     <Box sx={{ flexGrow: 1 }}>
       <Container maxWidth="md">
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <CountyMap
-            clickFunction={(event: any) => {
-                event.preventDefault()
-                console.log(event.target.id.replace('-County', '').replaceAll('-', ' '))
-                localStorage.setItem("selectedCounty", event.target.id.replace('-County', '').replaceAll('-', ' '))
-                router.push('/charts', '/charts', {shallow: true})
-            }}
-        />
         </Box>
         <br/>
       </Container>
