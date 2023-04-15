@@ -81,7 +81,7 @@ export default function Charts() {
             selectedCounties={selectedCounties}
             sql='SELECT * FROM $CITY WHERE hate_crime = true GROUP BY inc_time.inc_year'
             prefix={['aggregations','inc_time.inc_year','buckets']}
-            width='77vw'
+            width='38vw'
             height='45vh'
             limit={6}
             perCapita={perCapita}
@@ -93,33 +93,33 @@ export default function Charts() {
             selectedCounties={selectedCounties}  
             sql='SELECT * FROM $CITY WHERE hate_crime = true GROUP BY crime_desc'
             prefix={['aggregations','crime_desc.keyword','buckets']}
-            width='77vw'
+            width='38vw'
             height='45vh'
             limit={5}
             perCapita={perCapita}
             sort
         />,
+        // I like having the timeline and comparison graphs side by side, I think there needs to be some kind of long card to break up hate crimes vs sex crimes.  If I think of something I'll put it here
         <LineGraph
             key='yearly sex crimes'
             title='sex crimes by year'
             selectedCounties={selectedCounties}
             sql='SELECT * FROM $CITY WHERE sex_crime = true GROUP BY inc_time.inc_year'
             prefix={['aggregations','inc_time.inc_year','buckets']}
-            width='77vw'
+            width='38vw'
             height='45vh'
             limit={6}
             perCapita={perCapita}
             sort
         />,
-        // this one seems fine, I tested it with a bunch of the weird counties 
-        // would it be possible to have the sex/hate crime line and bar chart side by side? I can't seem to figure out how to do that
+        // this bar graph seems fine, I tested it with a bunch of the weird counties 
         <BarGraph 
             key='sex crime types' 
             title='breakdown of sex crimes'
             selectedCounties={selectedCounties}  
             sql='SELECT * FROM $CITY WHERE sex_crime = true GROUP BY crime_desc'
             prefix={['aggregations','crime_desc.keyword','buckets']}
-            width='77vw'
+            width='38vw'
             height='45vh'
             limit={6} // there are 6 categories of sex crime
             perCapita={perCapita}
