@@ -85,7 +85,7 @@ export default function BarGraph(props: BarGraphProps) {
                 console.log(rawData)
                 if (props.selectedCounties.length === 1 && rawData.length === 1) {
                     const d1Pop = getPopulation(props.selectedCounties[0]);
-                    for (let x = 0; x < props.limit; x++) {
+                    for (let x = 0; x < Math.min(props.limit, rawData[0].length); x++) {
                         storage.push({
                             name: rawData[0][x].key,
                             d1: (props.perCapita) ? (rawData[0][x].doc_count/d1Pop) : (rawData[0][x].doc_count),
@@ -94,7 +94,7 @@ export default function BarGraph(props: BarGraphProps) {
                 } else if (props.selectedCounties.length === 2 && rawData.length === 2) {
                     const d1Pop = getPopulation(props.selectedCounties[0]);
                     const d2Pop = getPopulation(props.selectedCounties[1]);
-                    for (let x = 0; x < props.limit; x++) {
+                    for (let x = 0; x < Math.min(props.limit, rawData[0].length); x++) {
                         storage.push({
                             name: rawData[0][x].key,
                             d1: (props.perCapita) ? (rawData[0][x].doc_count/d1Pop) : (rawData[0][x].doc_count),
@@ -105,7 +105,7 @@ export default function BarGraph(props: BarGraphProps) {
                     const d1Pop = getPopulation(props.selectedCounties[0]);
                     const d2Pop = getPopulation(props.selectedCounties[1]);
                     const d3Pop = getPopulation(props.selectedCounties[2]);
-                    for (let x = 0; x < props.limit; x++) {
+                    for (let x = 0; x < Math.min(props.limit, rawData[0].length); x++) {
                         storage.push({
                             name: rawData[0][x].key,
                             d1: (props.perCapita) ? (rawData[0][x].doc_count/d1Pop) : (rawData[0][x].doc_count),
