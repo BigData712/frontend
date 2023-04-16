@@ -149,7 +149,7 @@ export default function BarGraph(props: BarGraphProps) {
                     <ResponsiveContainer width="95%" height="95%">
                         <BarChart data={processedData}>
                             <CartesianGrid vertical={false}/>
-                            <XAxis dataKey="name" height={20+(30*numLines)} interval={0} tick={<CustomizedTick setNumLines={setNumLines} numLines={numLines}/>}/>
+                            <XAxis dataKey="name" height={20+(35*(1+numLines))} interval={0} tick={<CustomizedTick setNumLines={setNumLines} numLines={numLines}/>}/>
                             <YAxis />
                             <Tooltip />
                             <Legend verticalAlign="top"/>

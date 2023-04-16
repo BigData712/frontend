@@ -71,13 +71,17 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            Crime Crunch
-          </Typography>
+          <Button 
+                    key="title" 
+                    sx={{ color: '#fff', fontSize: 20}}
+                    onClick={() => {
+                        router.push("/", "/", {shallow: true})
+                    }}
+                    >
+                Crime Crunch
+              </Button>
+
+          <div style={{flexGrow: 1}}></div>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
                 <Button 

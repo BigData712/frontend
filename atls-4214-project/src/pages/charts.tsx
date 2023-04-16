@@ -156,7 +156,7 @@ export default function Charts() {
                     <div>
                 <Typography variant='h2' align='center'>Charts</Typography>
                 <Typography variant='body1' align='center'>
-                    Choose up to three counties in the interactive map above by clicking on them. Click again to deselect.  <br/> Crime comparisons will automatically populate the tables below
+                    Choose up to three counties in the interactive map below by clicking on them. Click again to deselect.  <br/> Crime comparisons will automatically populate the tables below
                     and update based on your selections in real time. <br/> You can also toggle the &quot;Per Capita&quot; switch at the top right of this box to see comparisons per capita (On) or <br/>
                     direct comparisons by count (Off). 
                 </Typography>
@@ -206,7 +206,7 @@ export default function Charts() {
                 
             </Paper>
             </div>
-            {(countyStatus !== Status.Succeeded) ? (
+            {(countyStatus !== Status.Succeeded || !(selectedCounties.length > 0)) ? (
                 <></>
             ) : (
                 <div
