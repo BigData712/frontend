@@ -50,7 +50,7 @@ export default function Charts() {
             limit={5}
             perCapita={perCapita}
         />,
-        <BarGraph 
+        <LineGraph 
             key='top hour' 
             title='crime reports by hour of day'
             selectedCounties={selectedCounties}  
@@ -74,7 +74,32 @@ export default function Charts() {
             perCapita={perCapita}
             sort
         />,
-        // These two Line Graphs get Unhandled Runtime Error, TypeError: undefined is not an object (evaluating 'rawdata[0][x].key') for some counties (one of them is Pueblo)
+        // gun crimes
+        <BarGraph 
+            key='gun crimes' 
+            title='Types of Crimes Involving Firearms'
+            selectedCounties={selectedCounties}  
+            sql='SELECT * FROM $CITY WHERE gun_violence = true GROUP BY crime_desc;'
+            prefix={['aggregations','crime_desc.keyword','buckets']}
+            width='77vw'
+            height='45vh'
+            limit={50}
+            perCapita={perCapita}
+            sort
+        />,
+        <BarGraph 
+            key='gun locations' 
+            title='Most Common Locations for Firearm Crimes'
+            selectedCounties={selectedCounties}  
+            sql='SELECT * FROM $CITY WHERE gun_violence = true GROUP BY loc_id;'
+            prefix={['aggregations','loc_id.keyword','buckets']}
+            width='77vw'
+            height='45vh'
+            limit={10}
+            perCapita={perCapita}
+            sort
+        />,
+        // hate crimes
         <LineGraph
             key='yearly hatecrimes'
             title='hate crimes by year'
@@ -100,6 +125,7 @@ export default function Charts() {
             sort
         />,
         // I like having the timeline and comparison graphs side by side, I think there needs to be some kind of long card to break up hate crimes vs sex crimes.  If I think of something I'll put it here
+        // sex crimes
         <LineGraph
             key='yearly sex crimes'
             title='sex crimes by year'
@@ -112,7 +138,6 @@ export default function Charts() {
             perCapita={perCapita}
             sort
         />,
-        // this bar graph seems fine, I tested it with a bunch of the weird counties 
         <BarGraph 
             key='sex crime types' 
             title='breakdown of sex crimes'
@@ -157,8 +182,8 @@ export default function Charts() {
                 <Typography variant='h2' align='center'>Charts</Typography>
                 <Typography variant='body1' align='center'>
                     Choose up to three counties in the interactive map below by clicking on them. Click again to deselect.  <br/> Crime comparisons will automatically populate the tables below
-                    and update based on your selections in real time. <br/> You can also toggle the &quot;Per Capita&quot; switch at the top right of this box to see comparisons per capita (On) or <br/>
-                    direct comparisons by count (Off). 
+                    and update based on your selections in real time. <br/> You can also toggle the &quot;Per Capita&quot; switch at the top right of this box to see comparisons per capita (On) or
+                    direct <br/> comparisons by count (Off). External resources including the NIBRS crime definitions can be found on the &apos;ABOUT&apos; page. 
                 </Typography>
                 </div>
                 <FormControlLabel 
