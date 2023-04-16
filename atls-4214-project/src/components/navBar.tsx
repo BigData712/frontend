@@ -60,7 +60,7 @@ export default function NavBar() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav">
+      <AppBar component="nav" style={{ background: "#2e2e2e"}}>
         <Toolbar>
           <IconButton
             color="inherit"
