@@ -85,7 +85,7 @@ export default function Home() {
             variant='body1'
             textAlign='left'
         >
-            Crime Crunch is a project created for ATLS 4214 - Big Data Architecture.  It utilizes data collected from 
+            Crime Crunch is a project created by Ash Duy, Jaryd Meek, and Noah Nguyen for ATLS 4214 - Big Data Architecture.  It utilizes data collected from 
             the National Incident-Based Reporting System (NIBRS) aggregated on the FBI Crime Data Explorer to provide 
             statistics and analysis of crime trends across Colorado. 
         </Typography>
