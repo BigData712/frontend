@@ -85,7 +85,6 @@ export default function Charts() {
             height='45vh'
             limit={50}
             perCapita={perCapita}
-            sort
         />,
         <BarGraph 
             key='gun locations' 
@@ -97,7 +96,6 @@ export default function Charts() {
             height='45vh'
             limit={10}
             perCapita={perCapita}
-            sort
         />,
         // hate crimes
         <LineGraph
@@ -122,7 +120,6 @@ export default function Charts() {
             height='45vh'
             limit={5}
             perCapita={perCapita}
-            sort
         />,
         // I like having the timeline and comparison graphs side by side, I think there needs to be some kind of long card to break up hate crimes vs sex crimes.  If I think of something I'll put it here
         // sex crimes
@@ -148,7 +145,6 @@ export default function Charts() {
             height='45vh'
             limit={6} // there are 6 categories of sex crime
             perCapita={perCapita}
-            sort
         />
     ]
 
