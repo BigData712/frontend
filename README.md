@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 # Crime Crunch
 
-Hosted on [https://crime-crunch-kwd2.onrender.com](https://crime-crunch-kwd2.onrender.com). 
+Hosted on [https://crime-crunch.onrender.com/](https://crime-crunch.onrender.com/). 
 
 Made by: Ash Duy, Jaryd Meek, Noah Nguyen
 
