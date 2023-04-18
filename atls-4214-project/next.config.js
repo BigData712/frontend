@@ -2,7 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   output: "export",
-  distDir: "out"
+  images: {
+    unoptimized: true
+  },
+  trailingSlash: true
   // async rewrites() {
   //   return [
   //     // Rewrite everything to `pages/index`
