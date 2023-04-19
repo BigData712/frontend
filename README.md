@@ -7,7 +7,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Hosted on [https://crime-crunch.onrender.com/](https://crime-crunch.onrender.com/). 
 
-Made by: Kunal Rane, Chintan Modi, Sarthak Maniar, Ash Duy, Jaryd Meek, Noah Nguyen
+Made by:  Ash Duy, Jaryd Meek, Noah Nguyen, Kunal Rane, Chintan Modi, Sarthak Maniar
 
 ## About Crime Crunch
 Crime Crunch is a group project created for CU's ATLS 4214 - Big Data Architecture course. It is is an app designed to help Coloradans learn more about the different kinds of crimes occurring across the state. Utilizing data from the [FBI Crime Data Explorer](https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/home), users can view crime statistics from the various counties in Colorado and compare how types of crime compare or how they number reported has changed over time.
