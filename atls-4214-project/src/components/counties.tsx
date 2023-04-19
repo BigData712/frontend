@@ -124,3 +124,36 @@ export default function Counties() {
         </>
     );
 }
+
+
+
+
+// Converted code into functional component and countySelector is now replaced with the CountySelector component, which takes the counties prop and manages the selectedCounty state internally.
+// import { ChangeEvent, useState } from "react";
+// import { MenuItem, Select } from "@mui/material";
+
+// interface CountySelectorProps {
+//   counties: string[];
+// }
+
+// function CountySelector({ counties }: CountySelectorProps) {
+//   const [selectedCounty, setSelectedCounty] = useState("");
+
+//   function handleCountyChange(event: ChangeEvent<{ value: unknown }>) {
+//     setSelectedCounty(event.target.value as string);
+//   }
+
+//   return (
+//     <Select
+//       value={selectedCounty}
+//       label="County"
+//       onChange={handleCountyChange}
+//     >
+//       {counties.map((curr) => (
+//         <MenuItem value={curr} key={curr}>
+//           {curr}
+//         </MenuItem>
+//       ))}
+//     </Select>
+//   );
+// }
