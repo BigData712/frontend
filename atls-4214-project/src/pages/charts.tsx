@@ -27,6 +27,7 @@ export default function Charts() {
     const maxCounties = 3;
 
     // ** VISUALIZATIONS LIST **
+    // Defining an array of visualization components with their respective properties
     const visualizations:React.ReactElement[] = [
         <BarGraph 
             key='top5 crime' 

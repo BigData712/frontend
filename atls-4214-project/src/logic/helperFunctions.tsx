@@ -1,3 +1,4 @@
+// A function that converts a string to title case
 export function toTitleCase(input: String):String {
         return (
                 input // Replace underscores with spaces
@@ -6,8 +7,8 @@ export function toTitleCase(input: String):String {
                 .join(' ') //combine strings
                 );
         }
-        
-        // population values courtesy of https://www.colorado-demographics.com/counties_by_population
+// A function that returns the population of a county in Colorado given the county name   
+// population values courtesy of https://www.colorado-demographics.com/counties_by_population
         export function getPopulation(input: string):number {
                 switch (input) {
                         case "Adams":
