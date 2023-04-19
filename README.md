@@ -2,6 +2,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 # Crime Crunch
 
+[![](https://shields.io/badge/Made_with-TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=FFF)](https://www.typescriptlang.org/docs/)
+[![](https://img.shields.io/badge/Framework-next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/docs)
+
 Hosted on [https://crime-crunch.onrender.com/](https://crime-crunch.onrender.com/). 
 
 Made by: Ash Duy, Jaryd Meek, Noah Nguyen
