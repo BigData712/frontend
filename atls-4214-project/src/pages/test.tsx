@@ -32,6 +32,31 @@ export default function ApiTest() {
         })
     }, []);
 
+    //Alternative Approach for optimization
+    //The retrieveDataDSL method is awaited in an async function instead of using the .then method, which can improve readability and make error handling easier.
+    //The function passed to useEffect has no dependencies, so an empty array is passed as the second argument to ensure it runs only once.
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //       try {
+    //         const returned = await retrieveDataDSL("_aliases/", "");
+    //         const mainArr = Object.keys(returned)
+    //           .filter((curr) => curr[0] !== ".")
+    //           .map((curr) => {
+    //             const formattedString = curr.replaceAll("_", " ")
+    //               .split(" ")
+    //               .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+    //               .join(" ");
+    //             return formattedString;
+    //           })
+    //           .sort();
+    //         setCounties(mainArr);
+    //       } catch (error) {
+    //         console.log(error);
+    //       }
+    //     };
+      
+    //     fetchData();
+    //   }, []);
 
 
     return (
