@@ -216,10 +216,29 @@ export default function Charts() {
                                         setSelectedCounties([... selectedCounties, event.target.id.replaceAll('-', ' ')])
                                     }
                                 }}
+
+                                // Reduce load time by resetting selectedCounties array and using spread operator
+                                // clickFunction={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+                                //     event.preventDefault();
+                                //     const countyName = event.target.id.replaceAll("-", " ");
+                                //     if (selectedCounties.includes(countyName)) {
+                                //       const newSelectedCounties = selectedCounties.filter((curr) => curr !== countyName);
+                                //       setSelectedCounties(newSelectedCounties.length > 0 ? newSelectedCounties : []);
+                                //     } else if (selectedCounties.length < maxCounties) {
+                                //       setSelectedCounties([...selectedCounties, countyName]);
+                                //     }
+                                //   }};
+                                  
+
+
+
                                 selectedCounties={selectedCounties}
                                 numMaxCounties={3}
                             />
                         </div>
+
+                        
+
                     <div>
                         
                 </div>
